@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="corporate">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AccessDB Relationship Exporter</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.4/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#8b5cf6',
+                        accent: '#ec4899',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .method-card {
+            transition: all 0.3s ease;
+        }
+        .method-card:hover {
+            transform: translateY(-5px);
+        }
+        .code-block {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
+        <div class="container mx-auto px-4 py-6">
+            <div class="navbar">
+                <div class="navbar-start">
+                    <h1 class="text-3xl font-bold"><i class="fas fa-database mr-3"></i>AccessDB Relationship Exporter</h1>
+                </div>
+                <div class="navbar-end">
+                    <div class="flex space-x-4">
+                        <a href="#" class="btn btn-ghost"><i class="fas fa-home mr-2"></i> Home</a>
+                        <a href="#" class="btn btn-ghost"><i class="fas fa-question-circle mr-2"></i> Help</a>
+                        <a href="#" class="btn btn-ghost"><i class="fas fa-cog mr-2"></i> Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="card bg-base-100 shadow-xl mb-8">
+            <div class="card-body">
+                <h2 class="card-title text-3xl">Export Relationships from Microsoft Access</h2>
+                <p class="text-base-content/70">There are several methods to export relationships from your Access database. Choose the one that best fits your needs.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                    <!-- Method 1 -->
+                    <div class="method-card card bg-base-100 shadow-md border border-base-300">
+                        <div class="card-body">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-blue-100 text-primary rounded-full p-3 mr-4">
+                                    <i class="fas fa-file-pdf text-xl"></i>
+                                </div>
+                                <h3 class="card-title">Database Documenter</h3>
+                            </div>
+                            <p class="text-base-content/70">Generate a detailed report of your database schema including relationships.</p>
+                            <ul class="text-sm text-base-content/70 my-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Easy, no coding required</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Great for documentation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                                    <span>Output is a formatted report, not structured data</span>
+                                </li>
+                            </ul>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-primary w-full">
+                                    Select Method
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 2 -->
+                    <div class="method-card card bg-base-100 shadow-md border border-base-300">
+                        <div class="card-body">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-purple-100 text-secondary rounded-full p-3 mr-4">
+                                    <i class="fas fa-file-excel text-xl"></i>
+                                </div>
+                                <h3 class="card-title">Export to Excel</h3>
+                            </div>
+                            <p class="text-base-content/70">Export the Relationship Report to Excel for further manipulation.</p>
+                            <ul class="text-sm text-base-content/70 my-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Gets data into Excel</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Versatile output format</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                                    <span>Requires manual cleanup</span>
+                                </li>
+                            </ul>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-secondary w-full">
+                                    Select Method
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 3 -->
+                    <div class="method-card card bg-base-100 shadow-md border border-base-300">
+                        <div class="card-body">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-pink-100 text-accent rounded-full p-3 mr-4">
+                                    <i class="fas fa-code text-xl"></i>
+                                </div>
+                                <h3 class="card-title">VBA Code</h3>
+                            </div>
+                            <p class="text-base-content/70">Use VBA to extract relationship data into a table for easy export.</p>
+                            <ul class="text-sm text-base-content/70 my-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Clean, structured data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Fully automated and reusable</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                                    <span>Requires VBA knowledge</span>
+                                </li>
+                            </ul>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-accent w-full">
+                                    Select Method
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 4 -->
+                    <div class="method-card card bg-base-100 shadow-md border border-base-300">
+                        <div class="card-body">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-green-100 text-green-600 rounded-full p-3 mr-4">
+                                    <i class="fas fa-camera text-xl"></i>
+                                </div>
+                                <h3 class="card-title">Screenshot</h3>
+                            </div>
+                            <p class="text-base-content/70">Take a screenshot of the Relationships window for quick reference.</p>
+                            <ul class="text-sm text-base-content/70 my-4 space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>Instant visual reference</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-check text-green-500 mt-1 mr-2"></i>
+                                    <span>No technical knowledge needed</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-times text-red-500 mt-1 mr-2"></i>
+                                    <span>Not analyzable data</span>
+                                </li>
+                            </ul>
+                            <div class="card-actions justify-end">
+                                <button class="btn btn-success w-full">
+                                    Select Method
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card bg-base-100 shadow-xl mb-8">
+            <div class="card-body">
+                <h2 class="card-title text-3xl">VBA Code Example</h2>
+                <p class="text-base-content/70">Here's the VBA code to export relationships to a table:</p>
+                
+                <div class="mockup-code bg-neutral text-neutral-content mb-6">
+                    <pre><code><span class="text-info">Sub</span> <span class="text-warning">ExportRelationshipsToTable</span>()</code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Purpose: Exports database relationship info to a table</span></code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Author: Adapted for this guide</span></code></pre>
+                    <pre><code>    <span class="text-info">Dim</span> db <span class="text-info">As</span> DAO.Database</code></pre>
+                    <pre><code>    <span class="text-info">Dim</span> rel <span class="text-info">As</span> DAO.Relation</code></pre>
+                    <pre><code>    <span class="text-info">Dim</span> fld <span class="text-info">As</span> DAO.Field</code></pre>
+                    <pre><code>    <span class="text-info">Dim</span> newTable <span class="text-info">As</span> DAO.TableDef</code></pre>
+                    <pre><code>    <span class="text-info">Dim</span> rs <span class="text-info">As</span> DAO.Recordset</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-info">Set</span> db = CurrentDb()</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Delete the table if it already exists</span></code></pre>
+                    <pre><code>    <span class="text-info">On Error Resume Next</span></code></pre>
+                    <pre><code>    db.TableDefs.Delete <span class="text-success">"zExport_Relationships"</span></code></pre>
+                    <pre><code>    <span class="text-info">On Error GoTo</span> ErrorHandler</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Create a new table to hold the relationship info</span></code></pre>
+                    <pre><code>    <span class="text-info">Set</span> newTable = db.CreateTableDef(<span class="text-success">"zExport_Relationships"</span>)</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Create fields in the new table</span></code></pre>
+                    <pre><code>    <span class="text-info">With</span> newTable</code></pre>
+                    <pre><code>        .Fields.Append .CreateField(<span class="text-success">"RelationshipName"</span>, dbText)</code></pre>
+                    <pre><code>        .Fields.Append .CreateField(<span class="text-success">"TableName"</span>, dbText)</code></pre>
+                    <pre><code>        .Fields.Append .CreateField(<span class="text-success">"ForeignKey"</span>, dbText)</code></pre>
+                    <pre><code>        <span class="text-neutral-content/70">' ... more field definitions</span></code></pre>
+                    <pre><code>    <span class="text-info">End With</span></code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Append the new table to the database</span></code></pre>
+                    <pre><code>    db.TableDefs.Append newTable</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    <span class="text-neutral-content/70">' Loop through all relationships in the database</span></code></pre>
+                    <pre><code>    <span class="text-info">For Each</span> rel <span class="text-info">In</span> db.Relations</code></pre>
+                    <pre><code>        <span class="text-neutral-content/70">' We only want user-defined relationships</span></code></pre>
+                    <pre><code>        <span class="text-info">If</span> Left(rel.Name, 4) <> <span class="text-success">"MSys"</span> <span class="text-info">Then</span></code></pre>
+                    <pre><code>            <span class="text-info">For Each</span> fld <span class="text-info">In</span> rel.Fields</code></pre>
+                    <pre><code>                <span class="text-neutral-content/70">' Add records to the table</span></code></pre>
+                    <pre><code>                rs.AddNew</code></pre>
+                    <pre><code>                rs!RelationshipName = rel.Name</code></pre>
+                    <pre><code>                rs!TableName = fld.Name</code></pre>
+                    <pre><code>                <span class="text-neutral-content/70">' ... more field assignments</span></code></pre>
+                    <pre><code>                rs.Update</code></pre>
+                    <pre><code>            <span class="text-info">Next</span> fld</code></pre>
+                    <pre><code>        <span class="text-info">End If</span></code></pre>
+                    <pre><code>    <span class="text-info">Next</span> rel</code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>    rs.Close</code></pre>
+                    <pre><code>    MsgBox <span class="text-success">"Relationships exported to table 'zExport_Relationships'."</span>, vbInformation</code></pre>
+                    <pre><code>    <span class="text-info">Exit Sub</span></code></pre>
+                    <pre><code>    </code></pre>
+                    <pre><code>ErrorHandler:</code></pre>
+                    <pre><code>    MsgBox <span class="text-success">"Error "</span> & Err.Number & <span class="text-success">": "</span> & Err.Description, vbCritical</code></pre>
+                    <pre><code>    <span class="text-info">Exit Sub</span></code></pre>
+                    <pre><code><span class="text-info">End Sub</span></code></pre>
+                </div>
+                
+                <div class="alert alert-info mb-6">
+                    <div>
+                        <i class="fas fa-info-circle text-2xl"></i>
+                        <div>
+                            <h3 class="font-bold">Note about the Tailwind config</h3>
+                            <div class="text-xs">The <code>@type</code> comment should remain commented out. It's a JSDoc annotation that provides type information for IDEs but doesn't affect functionality.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between flex-col md:flex-row gap-4">
+                    <button class="btn btn-neutral">
+                        <i class="fas fa-download mr-2"></i> Download VBA Module
+                    </button>
+                    <button class="btn btn-primary">
+                        Copy Code <i class="fas fa-copy ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card bg-base-100 shadow-xl">
+            <div class="card-body">
+                <h2 class="card-title text-3xl">Export Results Preview</h2>
+                <p class="text-base-content/70">Once exported, your relationships data will look similar to this:</p>
+                
+                <div class="overflow-x-auto mt-4">
+                    <table class="table table-zebra">
+                        <thead>
+                            <tr>
+                                <th>Relationship Name</th>
+                                <th>Table</th>
+                                <th>Foreign Key</th>
+                                <th>Related Table</th>
+                                <th>Primary Key</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FK_Customers_Orders</td>
+                                <td>Orders</td>
+                                <td>CustomerID</td>
+                                <td>Customers</td>
+                                <td>CustomerID</td>
+                            </tr>
+                            <tr>
+                                <td>FK_Products_Orders</td>
+                                <td>OrderDetails</td>
+                                <td>ProductID</td>
+                                <td>Products</td>
+                                <td>ProductID</td>
+                            </tr>
+                            <tr>
+                                <td>FK_Employees_Orders</td>
+                                <td>Orders</td>
+                                <td>EmployeeID</td>
+                                <td>Employees</td>
+                                <td>EmployeeID</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-6 flex justify-end space-x-4 flex-col md:flex-row gap-4">
+                    <button class="btn btn-neutral">
+                        <i class="fas fa-file-export mr-2"></i> Export to CSV
+                    </button>
+                    <button class="btn btn-success">
+                        <i class="fas fa-file-excel mr-2"></i> Export to Excel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer footer-center p-10 bg-neutral text-neutral-content mt-12">
+        <div class="grid grid-flow-col gap-10">
+            <div class="text-left">
+                <h3 class="footer-title">AccessDB Exporter</h3>
+                <p class="max-w-xs">A tool to help you export and analyze relationship data from your Microsoft Access databases.</p>
+            </div> 
+            <div class="text-left">
+                <h3 class="footer-title">Quick Links</h3>
+                <div class="grid grid-flow-col gap-4">
+                    <a href="#" class="link link-hover">Documentation</a>
+                    <a href="#" class="link link-hover">VBA API Reference</a>
+                    <a href="#" class="link link-hover">Video Tutorials</a>
+                    <a href="#" class="link link-hover">Support Forum</a>
+                </div>
+            </div>
+            <div class="text-left">
+                <h3 class="footer-title">Subscribe to Updates</h3>
+                <div class="form-control w-80">
+                    <label class="label">
+                        <span class="label-text text-neutral-content">Enter your email address</span>
+                    </label> 
+                    <div class="relative">
+                        <input type="text" placeholder="username@site.com" class="input input-bordered w-full pr-16" /> 
+                        <button class="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="mt-8 pt-6 border-t border-neutral-content/10 text-sm">
+            <p>© 2023 AccessDB Relationship Exporter. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple interaction for demonstration
+        document.querySelectorAll('.method-card button').forEach(button => {
+            button.addEventListener('click', function() {
+                const methodName = this.closest('.method-card').querySelector('h3').textContent;
+                alert(`You selected the "${methodName}" method!`);
+            });
+        });
+        
+        // Copy code button functionality
+        document.querySelector('.btn-primary').addEventListener('click', function() {
+            alert('VBA code copied to clipboard!');
+        });
+    </script>
+</body>
+</html>
