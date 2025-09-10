@@ -6,7 +6,7 @@ This is a ready-to-run Docker dev stack. Replace the sample schema with your own
 ```bash
 cp .env.example .env
 docker compose up -d --build
-# Web:     http://localhost:5173
+# Web:     http://localhost:3000
 # API:     http://localhost:8081/api/health
 # Adminer: http://localhost:8080
 ```
