@@ -342,12 +342,12 @@ export default function App(){
             </div>
         </div> 
         <div classname="mt-8 pt-6 border-t border-neutral-content/10 text-sm">
-            <p>© 2023 AccessDB Relationship Exporter. All rights reserved.</p>
+            <p>© 2025 TEAMS Transport. All rights reserved.</p>
         </div>
     </footer>
 
     <script>
-        // Simple interaction for demonstration
+        {/* Simple interaction for demonstration| */}
         document.querySelectorAll('.method-card button').forEach(button => {
             button.addEventListener('click', function() {
                 const methodName = this.closest('.method-card').querySelector('h3').textContent;
@@ -355,7 +355,7 @@ export default function App(){
             });
         });
         
-        // Copy code button functionality
+        {/* Copy code button functionality */}
         document.querySelector('.btn-primary').addEventListener('click', function() {
             alert('VBA code copied to clipboard!');
         });
