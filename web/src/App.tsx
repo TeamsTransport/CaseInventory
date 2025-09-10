@@ -46,7 +46,7 @@ export default function App(){
                 <p class="text-base-content/70">There are several methods to export relationships from your Access database. Choose the one that best fits your needs.</p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-                    <!-- Method 1 -->
+                    {/* Method 1 */}
                     <div class="method-card card bg-base-100 shadow-md border border-base-300">
                         <div class="card-body">
                             <div class="flex items-center mb-4">
@@ -78,7 +78,7 @@ export default function App(){
                         </div>
                     </div>
 
-                    <!-- Method 2 -->
+                    {/* Method 2 */}
                     <div class="method-card card bg-base-100 shadow-md border border-base-300">
                         <div class="card-body">
                             <div class="flex items-center mb-4">
@@ -110,7 +110,7 @@ export default function App(){
                         </div>
                     </div>
 
-                    <!-- Method 3 -->
+                    {/* Method 3 */}
                     <div class="method-card card bg-base-100 shadow-md border border-base-300">
                         <div class="card-body">
                             <div class="flex items-center mb-4">
@@ -142,7 +142,7 @@ export default function App(){
                         </div>
                     </div>
 
-                    <!-- Method 4 -->
+                    {/* Method 4 */}
                     <div class="method-card card bg-base-100 shadow-md border border-base-300">
                         <div class="card-body">
                             <div class="flex items-center mb-4">
