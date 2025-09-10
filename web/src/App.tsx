@@ -20,6 +20,18 @@ export default function App(){
       .finally(() => setLoading(false))
   },[])
 
+  // Event handler for method selection
+  const handleMethodSelect = (event: React.MouseEvent) => {
+    const methodCard = event.currentTarget.closest('.method-card');
+    const methodName = methodCard?.querySelector('h3')?.textContent;
+    alert(`You selected the "${methodName}" method!`);
+  };
+
+  // Event handler for copy code button
+  const handleCopyCode = () => {
+    alert('VBA code copied to clipboard!');
+  };
+
   return (
     <>
     <header classname="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
@@ -313,50 +325,38 @@ export default function App(){
         </div>
     </main>
 
-    <footer classname="footer footer-center p-10 bg-neutral text-neutral-content mt-12">
-        <div classname="grid grid-flow-col gap-10">
-            <div classname="text-left">
-                <h3 classname="footer-title">AccessDB Exporter</h3>
-                <p classname="max-w-xs">A tool to help you export and analyze relationship data from your Microsoft Access databases.</p>
+    <footer className="footer footer-center p-10 bg-neutral text-neutral-content mt-12">
+        <div className="grid grid-flow-col gap-10">
+            <div className="text-left">
+                <h3 className="footer-title">AccessDB Exporter</h3>
+                <p className="max-w-xs">A tool to help you export and analyze relationship data from your Microsoft Access databases.</p>
             </div> 
-            <div classname="text-left">
-                <h3 classname="footer-title">Quick Links</h3>
-                <div classname="grid grid-flow-col gap-4">
-                    <a href="#" classname="link link-hover">Documentation</a>
-                    <a href="#" classname="link link-hover">VBA API Reference</a>
-                    <a href="#" classname="link link-hover">Video Tutorials</a>
-                    <a href="#" classname="link link-hover">Support Forum</a>
+            <div className="text-left">
+                <h3 className="footer-title">Quick Links</h3>
+                <div className="grid grid-flow-col gap-4">
+                    <a href="#" className="link link-hover">Documentation</a>
+                    <a href="#" className="link link-hover">VBA API Reference</a>
+                    <a href="#" className="link link-hover">Video Tutorials</a>
+                    <a href="#" className="link link-hover">Support Forum</a>
                 </div>
             </div>
-            <div classname="text-left">
-                <h3 classname="footer-title">Subscribe to Updates</h3>
-                <div classname="form-control w-80">
-                    <label classname="label">
-                        <span classname="label-text text-neutral-content">Enter your email address</span>
+            <div className="text-left">
+                <h3 className="footer-title">Subscribe to Updates</h3>
+                <div className="form-control w-80">
+                    <label className="label">
+                        <span className="label-text text-neutral-content">Enter your email address</span>
                     </label> 
-                    <div classname="relative">
-                        <input type="text" placeholder="username@site.com" classname="input input-bordered w-full pr-16" /> 
-                        <button classname="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
+                    <div className="relative">
+                        <input type="text" placeholder="username@site.com" className="input input-bordered w-full pr-16" /> 
+                        <button className="btn btn-primary absolute top-0 right-0 rounded-l-none">Subscribe</button>
                     </div>
                 </div>
             </div>
         </div> 
-        <div classname="mt-8 pt-6 border-t border-neutral-content/10 text-sm">
+        <div className="mt-8 pt-6 border-t border-neutral-content/10 text-sm">
             <p>© 2025 TEAMS Transport. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        document.querySelectorAll('.method-card button').forEach(button => {
-            button.addEventListener('click', function() {
-                const methodName = this.closest('.method-card').querySelector('h3').textContent;
-                alert(`You selected the "${methodName}" method!`);
-            });
-        });
-        
-        document.querySelector('.btn-primary').addEventListener('click', function() {
-            alert('VBA code copied to clipboard!');
-        });
-    </script>
+    </>
   )
 }
