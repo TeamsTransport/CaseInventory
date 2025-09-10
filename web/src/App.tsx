@@ -183,7 +183,7 @@ export default function App(){
                 <p classname="text-base-content/70">Here's the VBA code to export relationships to a table:</p>
                 
                 <div classname="mockup-code bg-neutral text-neutral-content mb-6">
-                    <pre><code><span classname="text-info">Sub</span> <span classname="text-warning">ExportRelationshipsToTable</span>()</code></pre>
+                    <pre><code>    <span classname="text-info">Sub</span> <span classname="text-warning">ExportRelationshipsToTable</span>()</code></pre>
                     <pre><code>    <span classname="text-neutral-content/70">' Purpose: Exports database relationship info to a table</span></code></pre>
                     <pre><code>    <span classname="text-neutral-content/70">' Author: Adapted for this guide</span></code></pre>
                     <pre><code>    <span classname="text-info">Dim</span> db <span classname="text-info">As</span> DAO.Database</code></pre>
@@ -216,7 +216,7 @@ export default function App(){
                     <pre><code>    <span classname="text-neutral-content/70">' Loop through all relationships in the database</span></code></pre>
                     <pre><code>    <span classname="text-info">For Each</span> rel <span classname="text-info">In</span> db.Relations</code></pre>
                     <pre><code>        <span classname="text-neutral-content/70">' We only want user-defined relationships</span></code></pre>
-                    <pre><code>        <span classname="text-info">If</span> Left(rel.Name, 4) <> <span classname="text-success">"MSys"</span> <span classname="text-info">Then</span></code></pre>
+                    <pre><code>        <span classname="text-info">If</span> Left(rel.Name, 4) !== <span classname="text-success">"MSys"</span> <span classname="text-info">Then</span></code></pre>
                     <pre><code>            <span classname="text-info">For Each</span> fld <span classname="text-info">In</span> rel.Fields</code></pre>
                     <pre><code>                <span classname="text-neutral-content/70">' Add records to the table</span></code></pre>
                     <pre><code>                rs.AddNew</code></pre>
