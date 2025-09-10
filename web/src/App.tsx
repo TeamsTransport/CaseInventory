@@ -21,6 +21,7 @@ export default function App(){
   },[])
 
   return (
+    <>
     <header class="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
         <div class="container mx-auto px-4 py-6">
             <div class="navbar">
