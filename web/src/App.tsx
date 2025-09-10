@@ -347,7 +347,6 @@ export default function App(){
     </footer>
 
     <script>
-        {/* Simple interaction for demonstration| */}
         document.querySelectorAll('.method-card button').forEach(button => {
             button.addEventListener('click', function() {
                 const methodName = this.closest('.method-card').querySelector('h3').textContent;
@@ -355,7 +354,6 @@ export default function App(){
             });
         });
         
-        {/* Copy code button functionality */}
         document.querySelector('.btn-primary').addEventListener('click', function() {
             alert('VBA code copied to clipboard!');
         });
