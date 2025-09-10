@@ -82,7 +82,7 @@ export default function App(){
                                 </li>
                             </ul>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary w-full">
+                                <button className="btn btn-primary w-full" onClick={handleMethodSelect}>
                                     Select Method
                                 </button>
                             </div>
@@ -114,7 +114,7 @@ export default function App(){
                                 </li>
                             </ul>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-secondary w-full">
+                                <button className="btn btn-secondary w-full" onClick={handleMethodSelect}>
                                     Select Method
                                 </button>
                             </div>
@@ -146,7 +146,7 @@ export default function App(){
                                 </li>
                             </ul>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-accent w-full">
+                                <button className="btn btn-accent w-full" onClick={handleMethodSelect}>
                                     Select Method
                                 </button>
                             </div>
@@ -178,7 +178,7 @@ export default function App(){
                                 </li>
                             </ul>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-success w-full">
+                                <button className="btn btn-success w-full" onClick={handleMethodSelect}>
                                     Select Method
                                 </button>
                             </div>
@@ -263,7 +263,7 @@ export default function App(){
                     <button className="btn btn-neutral">
                         <i className="fas fa-download mr-2"></i> Download VBA Module
                     </button>
-                    <button className="btn btn-primary">
+                    <button className="btn btn-primary" onClick={handleCopyCode}>
                         Copy Code <i className="fas fa-copy ml-2"></i>
                     </button>
                 </div>
