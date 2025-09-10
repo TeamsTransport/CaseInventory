@@ -33,6 +33,7 @@ export default function App(){
   };
 
   return (
+    <>
     <div classname="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
         <div classname="container mx-auto px-4 py-6">
             <div classname="navbar">
@@ -355,5 +356,6 @@ export default function App(){
             <p>© 2025 TEAMS Transport. All rights reserved.</p>
         </div>
     </footer>
+    </>
   )
 }
