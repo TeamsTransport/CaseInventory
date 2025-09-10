@@ -33,8 +33,7 @@ export default function App(){
   };
 
   return (
-    <>
-    <header classname="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
+    <div classname="bg-gradient-to-r from-primary to-secondary text-primary-content shadow-lg">
         <div classname="container mx-auto px-4 py-6">
             <div classname="navbar">
                 <div classname="navbar-start">
@@ -49,8 +48,7 @@ export default function App(){
                 </div>
             </div>
         </div>
-    </header>
-
+    </div>
     <main classname="container mx-auto px-4 py-8">
         <div classname="card bg-base-100 shadow-xl mb-8">
             <div classname="card-body">
@@ -357,6 +355,5 @@ export default function App(){
             <p>© 2025 TEAMS Transport. All rights reserved.</p>
         </div>
     </footer>
-    </>
   )
 }
