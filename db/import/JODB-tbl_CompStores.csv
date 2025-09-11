@@ -1,0 +1,190 @@
+ID,CompID,Store,StoreAddress,StoreCity,StoreProv,StorePostalCode
+1,1,NF #6930,17515 Stoney Plain Rd NW,Edmonton,AB,T5S 2S1
+2,1,NF #7651,2331 66 St NW,Edmonton,AB,T6K 4B4
+3,1,NF #9460 / #7530,9460 216 Street NW,Edmonton,AB,T5T 1M9
+4,1,No Frills #7919,150 Barton Drive,Taber,AB,T1G 2E9
+5,1,RCSS #1537,11839 26 Ave SW,Edmonton,AB,T6W 3R3
+6,1,RCSS #1538,1155 Windermere Way SW,Edmonton,AB,T6W 2P3
+7,1,RCSS # 1579,5016 - 51st Ave,Red Deer,AB,T4N 4H5
+8,1,SDM #5798 / #2385,1024 Webber Green Dr NW,Edmonton,AB,T5T 4K3
+9,1,SDM #2402,400 - 4300 Park Ave S,Stoney Plain,AB,T7Z 2W7
+10,1,SDM #3586,100 - 120 5th Ave W,Cochrane,AB,T4C 0A4
+11,1,SDM #4668,6710 178 Ave NW,Edmonton,AB,T5T 4H0
+12,1,SDM #5409,5800 46 Ave,Taber,AB,T1G 2B1
+13,1,SDM #5889,8903 100th St,Morrinville,AB,T8R 1V5
+14,1,SDM #7486,108 Country Village Rd NE,Calgary,AB,T3K 2K9
+15,1,YIG # 1889,10901 98 St,High Level,AB,T0H 1Z0
+16,1,YIG #5040 / #7906,829 Mandalay Blvd,Carstairs,AB,T0M 0N0
+17,1,RCSS #1506,1578 Regent Ave W,Winnipeg,MB,R2C 3B4
+18,1,RCSS #1510,175 Cargill Rd,Winkler,MB,R6W 4A9
+19,1,RCSS #1516,550 Kenaston Blvd,Winnipeg,MB,R3N 2A1
+20,1,SDM #6782,1430 Main St S,Dauphin,MB,R7N 4M4
+21,1,Dominion #923,166 Conception Bay Hwy,Conception Bay,NL,A1W 3A6
+22,1,Dominion #925,62 Prince Rupert Drive,Stephenville,NL,A2N 3W7
+23,1,Dominion #926,5 Murphy Square,Corner Brook,NL,A2H 1R4
+24,1,NF #2714,621 Fairville Blvd,St. John,NB,E2M 4X5
+25,1,NF #3355,1300 Topsaid Rd SE,Paradise,NL,A1L 1N9
+26,1,NF #7648,190 Two Nations Crossing,Fredericton,NB,E3A 0H2
+27,1,NF #7938,165 Main Street,Chipman,NB,E4A 1Y1
+28,1,NF #7963 / #5005,375 Pleasant Street,Dartmouth,NS,B2Y 4N4
+29,1,RASS #313,5178 St Margaret's Bay Rd,Upper Tantallon,NS,B3Z 4H3
+30,1,RASS #329,116 Main Street,Fredericton,NB,E3A 9N6
+31,1,RASS #331,50 Milton Road,Liverpool,NS,B0T 1K0
+32,1,RASS #379,3601 Joseph Howe Drive,Halifax,NS,N3L 4H8
+33,1,RASS #388,509 Main Street,Montague,PE,C0A 1R0
+34,1,SDM #5848,200 Two Nations Crossing,Fredericton,NB,E3A 0W8
+35,1,YIG #670,211 Duke St,Chester,NS,B0J 1J0
+36,1,YIG #685,143 Victoria Road,Lunenburg,NS,B0J 2C0
+37,1,YIG #1402,543 Main Street,Mahone Bay,NS,B0J 2E0
+38,1,YIG #1415,3070 Main Street,Salisbury,NB,E4J 2L6
+39,1,YIG #7143,229 Main Street,Lewisporte,NL,A0G 3A0
+40,1,YIG #7170,499 Main Street,Alberton,PE,C0B 1B0
+41,1,YIG #7172,229 Boul JD Gauthier,Shippagan,NB,E8S 1N2
+42,1,Loblaw #1001,1792 Liverpool Road,Pickering,ON,L1V 1V9
+43,1,Loblaw #1021,50 Musgrave Street,Toronto,ON,M4E 3W2
+44,1,Loblaw #1022,400 Kent St W,Lindsay,ON,K9V 6E3
+45,1,Loblaw #1090,250 Lakeshore Road West,Port Credit,ON,L5H 1G6
+46,1,Loblaw #1170,363 Rideau St,Ottawa,ON,K1N 5Y6
+47,1,NF #289,1811 Avenue Road,Toronto,ON,M5M 3Z3
+48,1,NF #7943 #450,2681 Alta Vista Drive,Ottawa,ON,K1V 7T5
+49,1,NF #718,70 Clementine Drive,Brampton,ON,L6Y 0L8
+50,1,NF #3140,1 York Gate Blvd,North York,ON,M3N 3A1
+51,1,NF #3142,230 Goerge St N,Peterborough,ON,K9J 3G8
+52,1,No Frills #3457,6520 Derry Road,Milton,ON,L9T 7Z3
+53,1,NF #3494,1641 Jane Street ,Toronto,ON,M9N 2R8
+54,1,NF #3615,13071 Yonge Street,Richmond Hills,ON,L4H 0S9
+55,1,NF #3616,1725 Kingston Road,Pickering,ON,L1V 4L9
+56,1,NF #3619,7070 McLaughlin Road,Mississauga,ON,L5W 1W7
+57,1,NF #3728,635 Southdale Rd E,London,ON,N6E 3W6
+58,1,NF #3924,3401 Lawrence Ave,Scarborough,ON,M1H 1B2
+59,1,NF #3925,6220 Yonge Street,North York,ON,M2M 3X4
+60,1,NF #5459,1030 Coverdale Drive,Kingston,ON,K7M 9E1
+61,1,NF #6790,75 The Esplanade,Toronto,ON,M5E 1Z4
+62,1,NF #6945,759 Mt Plesant Road,Toronto,ON,M4S 2N4
+63,1,NF #7026,1450 Lawrence Ave E,North York,ON,M4A 2S8
+64,1,NF #7186,200 Grant Carman Dr,Nepean,ON,K2E 7Z8
+65,1,NF #7415,1250 South Service Road,Mississauga,ON,L5E 1V4
+66,1,NF #7505,5762 Hwy 7 E,Markham,ON,L3P 1A8
+67,1,NF #7509,1591 Wilson Ave,North York,ON,M3L 1A5
+68,1,NF #3451 / #7528,1-13311 Loyalist Pkwy,Picton,ON,K0K 2T0
+69,1,NF #7649,2300 Dorchester Road,Dorchester,ON,N0L 1G5
+70,1,NF #7937,720 Broadview Ave,Toronto,ON,M4K 2P1
+71,1,No Frills #7950,450 Dupont,Toronto,ON,M5R 3P3
+72,1,No Frills #7952,261 Richmond St W,Toronto,ON,M5V 3M6
+73,1,NF #7955,332 Wellington Road,London,ON,N6C 4P6
+74,1,NF #7961,325 Central Parkway W,Mississauga,ON,L5B 3X9
+75,1,NF #7964,42 Hanna Ave,Toronto,ON,M6K 1X1
+76,1,RCSS #1009,190 Richmond Road,Ottawa,ON,K1Z 6W6
+77,1,RCSS #1024,201 Oak Park Blvd,Oakville,ON,L6H 6M3
+78,1,RCSS #2818,125 Queensway E,Simcoe,ON,N3Y 4M5
+79,1,RCSS #2826,600 Murphy Road,Sarnia,ON,N7S 2X1
+80,1,RCWC #6720,16 10TH Ave S #16,Kenora,ON,P9M 2J4
+81,1,RCWC #6746,316 Fort William Road,Thunder Bay,ON,P7B 2Z2
+82,1,RCWC #6952,85 Steeles Ave W,Brampton,ON,L6Y 0K3
+83,1,SDM #880,1571 Sandhurst Cir,Scarborough,ON,M1V 1V2
+84,1,SDM #952,420 Hazeldean Road,Kanata,ON,K2L 4B2
+85,1,SDM #1114,1421 Grand Marais Rd W,Windsor,ON,N9E 4V1
+86,1,SDM #4771,3050 Argentia Rd,Mississauga,ON,L5N 8E1
+87,1,SDM #5888,2210 Bank Street,Ottawa,ON,K1V 1J5
+88,1,SDM #5891,12035 Hwy 17,Sturgeon Falls,ON,P2B 2S6
+89,1,SDM #5892,1029 Brodie Dr,Orilla,ON,L3V 0V2
+90,1,SDM #5952,125 Queens Quay E,Toronto,ON,M5A 0Z6
+91,1,SDM #5953,4-100 New Park Pl,Vaughan,ON,L4K 0H9
+92,1,SDM #9685 / #3755,1950 Fisher Hallman Rd,Kitchener,ON,N2R 1R3
+93,1,Valu-Mart #851,52 Bridge Street,Hastings,ON,K0L 1Y0
+94,1,Valu-Mart #851 / YIG #7927,52 Bridge Street N,Hastings,ON,K0L 1Y0
+95,1,Valu-Mart #2661 / YIG #7924,234 Oxford St E,London,ON,N6A 1T7
+96,1,YIG #408,31 Ninth St E,Cornwall,ON,K6H 6R3
+97,1,YIG #458,65 Regional Rd 24,Lively,ON,P3Y 1C3
+98,1,YIG #806,Kemptville Mall Hwy 43 W,Kemptville,ON,K0G 1J0
+99,1,YIG #810,20 Jocelyn Rd,Port Hope,ON,L1A 3V5
+100,1,YIG #817,5121 Country Rd 21,Haliburton,ON,K0M 1S0
+101,1,YIG #823,25 Ferrara Drive,Smiths Falls,ON,K7A 5K6
+102,1,YIG #827,753 Notre-Dame St,Embrun,ON,K0A 1W0
+103,1,YIG #839,30 Beaver Ave,Beaverton,ON,L0K 1A0
+104,1,YIG #885,290 First Street N,Gravenhurst,ON,P1P 1H3
+105,1,YIG #895,62 Thames Rd E,Exeter,ON,N0N 1S3
+106,1,YIG #1627,1560 Cameron Street,Hawkesbury,ON,K6A 3S5
+107,1,YIG #1664,4764 - 17 Regional Road 15,Chelmsford,ON,P0M 1L0
+108,1,YIG #2140 ,3 Huron Walk Unit 1,Manitouwadge,ON,P0T 2C0
+109,1,YIG #2639 DS,1 Laurentain Ave,North Bay DS,ON,P1B 9T2
+110,1,YIG #2639 WD,1 Laurentain Ave,North Bay WD,ON,P1B 9T2
+111,1,YIG #2682,273 King Street W,Ingersoll,ON,N5C 2K9
+112,1,YIG 3804,134 Main Street,Erin,ON,N0B 1T0
+113,1,YIG #7156,206497 Hwy 26 E,Meaford,ON,N4L 1W7
+114,1,YIG #7179,671 River Road,Ottawa,ON,K1V 2G2
+115,1,YIG #7207,780 Queen St E,St Marys,ON,N4X 1B1
+116,1,YIG #7362,130 Queen Street,Niagra on the Lake,ON,L0S 1J0
+117,1,YIG #7506,2737 Laurier St,Rockland,ON,K4K 1A3
+118,1,YIG #7523,75 King Street,Waterloo,ON,N2J 1P2
+119,1,YIG #7535,2266 Queen St E,Toronto,ON,M4E 1G4
+120,1,YIG #7917,75 King Street,Waterloo,ON,N2J 1P2
+121,1,YIG #7923,40 Meredith Street,Little Current,ON,P0P 1K0
+122,1,YIG #7925,5 Main Street,Morrisburg,ON,K0C 1X0
+123,1,YIG #7926,160 56 Victoria Street,Tweed,ON,K0K 3J0
+124,1,YIG #7932 (VM#2669),42 Matthew Street ,Marmora,ON,K0K 2M0
+125,1,YIG #7968 / Valu-Mart #2721,250 Hwy 144,Dowling,ON,P0M 1R0
+126,1,Zehrs #507,11 Bryne Drive,Barrie,ON,L4N 8V8
+127,1,Zehrs #535,600 Mithcell Rd Hwy 23 S,Listowel,ON,N4W 3T1
+128,1,Zehrs #537,6940 Morrison Street,Niagra Falls,ON,L2E 7K5
+129,1,Zehrs #538,297 Eramosa Road,Guelph,ON,N1E 2M7
+130,1,Zehrs #539,800 Tower St S,Fergus,ON,N1M 2R3
+131,1,Zehrs #560,750 Ottawa St S,Kitchener,ON,N2E 1B6
+132,1,Zehrs #563,1160 16th Street East,Owen Sound,ON,N4K 1Z3
+133,1,Zehrs #580,289 Coldwater Road W,Orilla,ON,L3V 3M1
+134,1,Maxi #4558,375 Rue Jean-talon ouest,Montreal,QC,H3N 2Y8
+135,1,Maxi #7550,600 Rue Laurendeau,Montreal,QC,H4E 3X4
+136,1,Maxi #7552,955 Boul Rene-Levesque Ouest,Sillery,QC,G1S 1T7
+137,1,Maxi #7039 / #7553,2235 1ere V,Limoilou (Quebec City),QC,G1L 3M9
+138,1,Maxi #7561,169 Rue Queen,Sherbrooke,QC,J1M 1K1
+139,1,Maxi #7564,2900 CH St-Louis,Quebec,QC,G1W 4R7
+140,1,Maxi #7565,50 Rue Victoria,Sorel-Tracy,QC,J3P 1Y6
+141,1,Maxi #7567 ,2185 Rue Galt Ouest,Sherbrooke,QC,J1K 1K3
+142,1,Maxi #7567 (Overstock),2185 Rue Galt Ouest,Sherbrooke,QC,J1K 1K3
+143,1,Maxi #7567 (Was Maxi #7232),2185 Rue Galt Ouest,Sherbrooke,QC,J1K 1K3
+144,1,Maxi #7568 (#8013),100 Rue Des Oblats N,Ville Marie,QC,J9V 1J7
+145,1,Maxi #7575,101 Blvd des Hautis-Bois,Sainte-Julie,QC,J3E 3J8
+146,1,Maxi #7576,300 Rue Sicard,Ste-Therese,QC,J7E 3X5
+147,1,Maxi #7657,4280 Rue Des Patriotes,Contrecoeur,QC,J0L 1C0
+148,1,Maxi #7945,1165 Maurice Bachand,Windsor,QC,J1S 1J0
+149,1,Maxi #7958,393 ch. De la Grande-Cote,Boisbriand,QC,J7G 1B1
+150,1,Maxi #7959,161 Road 230 West,la Pocatiere,QC,G0R 1Z0
+151,1,Maxi #7960,400 Boul De Ste-Adele,Sainte-Adele,QC,J8B 2N2
+152,1,Maxi #7972,11075 boul Henri-Bourassa,Quebec City,QC,G1G 3X8
+153,1,Maxi #8636,50 Boul. Tashereau,La Prairie,QC,J5R 4V4
+154,1,Maxi #8653,595 du Phare Est,Matane,QC,G4W 1A9
+155,1,Maxi #8662,3000 rue Wellington ,Verdon,QC,H4G 1T1
+156,1,Maxi #8663,120 bld Arthabaska O,Victoriaville,QC,G6S 0P2
+157,1,Maxi #8678,200 Boul Omer-Marci,Richelieu,QC,J2W 2V1
+158,1,Maxi #8702,300 Bould St Joseph,Gatineau (Hull),QC,J8Y 3Y3
+159,1,Maxi #8777,1035 Boul Du Quartier,Brossard,QC,J4Y 0B4
+160,1,Maxi #8901,1699 Estimauville,Giffard,QC,G1J 5E2
+161,1,Maxi #8922,2655 Chemin Chambly,Longueuil,QC,J4L 1M3
+162,1,Maxi #8929,444 Boul Cure-labella,Laval,QC,H7P 4W7
+163,1,Maxi #8934,7900 Boul Coudineau,St Hubert,QC,J3Z 1H2
+164,1,Maxi #8935,"201, 1ere Avenue",Val-des-Sources,QC,J1T 1Y3
+165,1,Maxi #8939,50 Rte du President Kennedy,Levis,QC,G6V 6W8
+166,1,Maxi #8967,3399 Rue Queen,Rawdon,QC,J0K 1S0
+167,1,Maxi #8985,570 bd Lafleche,Baie-Cineau,QC,G5C 1C3
+168,1,Maxi #9918,1480 Rte Des Rivieres,Saint-Nicolas,QC,G7A 5G2
+169,1,Provigo #7115,1001 Boul. De Montarville,Boucherville,QC,J4B 6P5
+170,1,Provigo #7198,150 Rue Antoinette-Robidoux,Longueil,QC,J4N 1P3
+171,1,Provigo #7202,50 Av St-Denis,Saint-Sauveur,QC,J0R 1R4
+172,1,Provigo #7288,2925 Rue Rachel,Montreal,QC,H1W 3Z8
+173,1,Provigo #7293,1402 Rue Roberval,Ste Bruno,QC,J3V 5J2
+174,1,Provigo #7297,200 - 1275 Ave Des Canadian,Montreal,QC,H3B 0G4
+175,1,Provigo #7574,2120 Rue Roussel,Chicutimi-Nord,QC,G7G 1W2
+176,1,RCWC #8240,1005 Boul Cure-labelle,Laval,QC,H7V 22V7
+177,1,RCWC #8241,2107 Rue Lapierre ,Lasalle,QC,H8N 1B4
+178,1,RCWC #8242 ,3708 CH de Chambly,Longueuil,QC,J4L IN8
+179,1,SDM #19,550 Boul Lafleche ,Baie-Comeau,QC,G5C 1C3
+180,1,SDM #2016,1495 Van Horne,Montreal,QC,H2V 1L3
+181,1,SDM #5469 (ESBE Scientific Industries),80 McPherson St,Markham,QC,L3R 3V6
+182,1,SDM #5603,4765 Grande Allee,Brossard,QC,J4Z 3G1
+183,1,NF #9694,1251 Main Street N,Moose Jaw ,SK,S6H 6M3
+184,1,RCSS #1533,3806 Albert Street,Regina,SK,S4S 3R2
+185,1,RCWC #6712,4050 2nd Ave W,Prince Albert,SK,S6W 1A2
+186,1,YIG #1830,620A Saskatchewan Ave E,Melfort,SK,S0E 1A0
+187,1,YIG #3978,5000 - 4th Ave,Regina,SK,S4T 0J6
+188,1,YIG #7152,30 Kenderdine Rd,Saskatoon,SK,27N 4M8
+189,1,Archhh #0101,001 Binary Dr,Sherlock,MB,G5H 2S4

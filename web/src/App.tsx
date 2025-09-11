@@ -38,7 +38,7 @@ export default function App(){
         <div className="container mx-auto px-4 py-6">
             <div className="navbar">
                 <div className="navbar-start">
-                    <h1 className="text-3xl font-bold"><i className="fas fa-database mr-3"></i>AccessDB Relationship Exporter</h1>
+                    <h1 className="text-3xl font-bold"><i className="fas fa-database mr-3"></i>TEAMS Case Projects & Inventory</h1>
                 </div>
                 <div className="navbar-end">
                     <div className="flex space-x-4">
