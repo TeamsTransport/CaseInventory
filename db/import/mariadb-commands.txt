@@ -1,1 +1,2 @@
-docker exec -i db casedb -u root -p"$MARIADB_ROOT_PASSWORD" < db/init.sql
+docker exec -i db mariadb -u root -p"$MARIADB_ROOT_PASSWORD" casedb < db/init.sql
+
