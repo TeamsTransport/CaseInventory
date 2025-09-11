@@ -13,7 +13,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-      - ./db/import:/import:ro
+      - ./db/import:/db/import:ro
     command: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci"]
 
   adminer:
