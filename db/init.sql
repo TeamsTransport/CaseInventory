@@ -332,9 +332,9 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (ID, `Case Model`, `Width (inches)`, `Depth (inches)`,
- `Bolea Square Footage`, `Square Footage with Space in Warehouse`,
- `Case Size`, `AltDescription`, `Square Footage`, `Rounded Square Footage`);
-
+ `Bolea Square Footage`, @sfww,
+ `Case Size`, `AltDescription`, `Square Footage`, `Rounded Square Footage`)
+SET `Square Footage with Space in Warehouse` = NULLIF(@sfww, '');
 
 LOAD DATA INFILE '/import/JODB-tbl_Quote.csv'
 INTO TABLE stg_quote
