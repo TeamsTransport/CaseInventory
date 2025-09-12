@@ -141,6 +141,7 @@ CREATE TABLE job_inventory (
     shipping_order_id      VARCHAR(255) NULL,
     line_up_id             VARCHAR(255) NULL,
     case_model_id          INT UNSIGNED NULL,
+    case_serial_num        VARCHAR(255) NULL,
     department             VARCHAR(255) NULL,
     estimated_ship_date    DATE NULL,
     warehouse_arrival_date DATE NULL,
@@ -459,13 +460,12 @@ FROM stg_jobcostestimate;
 
 /* 8) Job Inventory (new surrogate key; link to job + store; resolve case_model_id by name) */
 INSERT INTO job_inventory (
-    job_id, store_id, case_model_id, case_serial_num, department,
-    estimated_ship_date, warehouse_arrival_date, storage_start_date,
-    storage_end_date, scheduled_date, scheduled_time, warehouse_location,
-    trailer_or_warehouse, original_order_id, original_trailer_id,
-    touched_not_touched, stripped_date, delivery_order_id, delivery_trailer_id,
-    days_in_storage, storage_charge, extended_price, original_store_tag,
-    lh_gable, rh_gable, no_gable
+    quote_id, job_id, store_id, shipping_order_id, line_up_id, case_model_id, 
+    case_serial_num, department, estimated_ship_date, warehouse_arrival_date,
+    storage_start_date, storage_end_date, scheduled_date, scheduled_time, 
+    warehouse_location, trailer_or_warehouse, original_order_id, original_trailer_id,
+    touched_not_touched, damage, stripped_date, delivery_order_id, delivery_trailer_id,
+    storage_charge, original_store_tag, lh_gable, rh_gable, no_gable
 )
 SELECT
     s.JobID,
@@ -484,12 +484,11 @@ SELECT
     TRIM(s.OriginalOrderID),
     TRIM(s.OriginalTrailerID),
     TRIM(s.TouchedNotTouched),
+    s.Damage,
     TRIM(s.StrippedDate),
     TRIM(s.DeliveryOrderID),
     TRIM(s.DeliveryTrailerID),
-    s.DaysInStorage,
     s.StorageCharge,
-    s.ExtendedPrice,
     TRIM(s.OriginalStoreTag),
     s.LHGable,
     s.RHGable,
