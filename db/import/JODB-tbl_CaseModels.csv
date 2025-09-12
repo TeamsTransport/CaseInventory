@@ -710,7 +710,7 @@ ID,Case Model,Width (inches),Depth (inches),Bolea Square Footage,Square Footage 
 709,SGM-12R-CBOM,60,152,70,70,12',Specialty Case,63.33,63
 710,SGM-8R-CBOM,60,105,50,50,8',Specialty Case,43.75,44
 711,SGMO-12R,60,152,70,70,12',Specialty Case,63.33,63
-712,SGMO-12R Service Deli,0,0,,0,,,,
+712,SGMO-12R Service Deli,0,0,,0,,,0,0
 713,SGMO-8R,60,105,50,50,8',Specialty Case,43.75,44
 714,SSAM12,148,48,55,55,,12' Specialty meat Case,49.33,49
 715,SSAM-12RG-CBOM,152,60,70,70,,,63.33,63
