@@ -55,7 +55,7 @@ CREATE TABLE comp_stores (
     store_id   INT UNSIGNED NOT NULL,
     company_id INT UNSIGNED NOT NULL,
     store_name VARCHAR(255) NOT NULL,
-    address_id INT UNSIGNED NOT NULL,
+    address_id INT UNSIGNED,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (store_id),
     KEY ix_stores_company (company_id),
