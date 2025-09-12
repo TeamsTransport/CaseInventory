@@ -1,4 +1,4 @@
-ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy,SalesRep,StoreJobPM
+ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurchaseOrder,CompStoreID,PreparedBy,SalesRep,StoreJobPM
 1,6930JC1127,11/27/2024 0:00,12/27/2024 0:00,4021445,4500738535,1,Johanne Clark,Johanne Clark,Michel Carriere
 2,7651JC1009,10/9/2024 0:00,11/8/2024 0:00,4021445,4500728454,2,Johanne Clark,Johanne Clark,John Ching
 4,7530JC0607,6/7/2024 0:00,7/7/2024 0:00,4021445,4500706079,3,Johanne Clark,Johanne Clark,Matthew Baryluk

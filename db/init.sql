@@ -341,6 +341,7 @@ IGNORE 1 LINES
  CompStoreID, PreparedBy, SalesRep, StoreJobPM)
 SET QuoteDate = STR_TO_DATE(@var_quote_date, '%m/%d/%Y %H:%i'),
     QuoteExpiry = STR_TO_DATE(@var_quote_expiry, '%m/%d/%Y %H:%i');
+    PurchaseOrder = NULLIF(@var_purchase_order, '');
 
 LOAD DATA INFILE '/import/JODB-tbl_JobCostEstimate.csv'
 INTO TABLE stg_jobcostestimate
