@@ -1,7 +1,6 @@
 ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy,SalesRep,StoreJobPM
 1,6930JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500738535,1,Johanne Clark,Johanne Clark,Michel Carriere
 2,7651JC1009,2024-10-09 0:00,2024-11-08 0:00,4021445,4500728454,2,Johanne Clark,Johanne Clark,John Ching
-3,,,,4021445,4500719465,4,Johanne Clark,Johanne Clark,Steve Binder
 4,7530JC0607,2024-06-07 0:00,2024-07-07 0:00,4021445,4500706079,3,Johanne Clark,Johanne Clark,Matthew Baryluk
 5,1537JC0910,2024-09-10 0:00,2024-10-10 0:00,4021445,,5,Johanne Clark,Johanne Clark,Darren Perry
 6,1538JC1114,2024-11-14 0:00,2024-12-14 0:00,4021445,4500736894,6,Johanne Clark,Johanne Clark,Atif Iqbal
@@ -40,7 +39,6 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 39,7143JC0508,2024-05-08 0:00,2024-06-07 0:00,4021445,,39,Johanne Clark,Johanne Clark,David Gaudreau
 40,7170JC0423,2024-04-23 0:00,2024-05-23 0:00,4021445,4500693358,40,Johanne Clark,Johanne Clark,David Gaudreau
 41,7172JC0905,2024-09-05 0:00,2024-10-05 0:00,4021445,4500722648,41,Johanne Clark,Johanne Clark,Jeff Huibers
-42,,,,4021445,4500679049,42,Johanne Clark,Johanne Clark,Steve Rogano
 43,1021JC0429,2024-04-29 0:00,2024-05-29 0:00,4021445,4500691599,43,Johanne Clark,Johanne Clark,Wayne Dickie
 44,1022JC1009,2024-10-09 0:00,2024-11-08 0:00,4021445,4500728742,44,Johanne Clark,Johanne Clark,Rob Lefler
 45,1090JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500739534,45,Johanne Clark,Johanne Clark,Rob Lefler
@@ -74,7 +72,6 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 73,7955JC0730,2024-07-30 0:00,2024-08-29 0:00,4021445,4500712858,73,Johanne Clark,Johanne Clark,John Cusimano
 74,7961JC0822,2024-08-22 0:00,2024-09-21 0:00,4021445,4500718378,74,Johanne Clark,Johanne Clark,Mike Burnell
 75,7964JC0618,2024-06-18 0:00,2024-07-18 0:00,4021445,4500703859,75,Johanne Clark,Johanne Clark,Marvin Gordon
-76,,,,4021445,4500720534,76,Johanne Clark,Johanne Clark,Wayne Dickie
 77,1024JC0905,2024-09-05 0:00,2024-10-05 0:00,4021445,4500720207,77,Johanne Clark,Johanne Clark,Atif Iqbal
 78,2818JC0612,2024-06-12 0:00,2024-07-12 0:00,4021445,4500704469,78,Johanne Clark,Johanne Clark,Randy Shippet
 79,2826JC1212,2023-12-12 0:00,2024-01-11 0:00,4021445,4500662138,79,Johanne Clark,Johanne Clark,Randy Shippet
@@ -91,7 +88,6 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 90,5952JC0905,2024-09-05 0:00,2024-10-05 0:00,4021445,4500722116,90,Johanne Clark,Johanne Clark,Eric Misener
 91,5953JC0930,2024-09-30 0:00,2024-10-30 0:00,4021445,4500728374,91,Johanne Clark,Johanne Clark,Tim Strevett
 92,3755JC1206,2024-12-06 0:00,2024-01-05 0:00,4021445,,92,Johanne Clark,Johanne Clark,Eric Misener
-93,,,,4021445,,93,Johanne Clark,Johanne Clark,Rob Lefler
 94,851JC0516,2024-05-16 0:00,2024-06-15 0:00,4021445,4500697458,94,Johanne Clark,Johanne Clark,Sam Catalano
 95,2661JC0624,2024-06-24 0:00,2024-07-24 0:00,4021445,450705441,95,Johanne Clark,Johanne Clark,Jeff McLeod
 96,408JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500738634,96,Johanne Clark,Johanne Clark,Rob Lefler
@@ -100,16 +96,13 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 99,810JC0612,2024-06-12 0:00,2024-07-12 0:00,4021445,4500703020,99,Johanne Clark,Johanne Clark,Jeff McLeod
 100,817JC0813,2024-08-13 0:00,2024-09-12 0:00,4021445,4500716350,100,Johanne Clark,Johanne Clark,Atif Iqbal
 101,823JC0506,2024-05-06 0:00,2024-06-05 0:00,4021445,4500696353,101,Johanne Clark,Johanne Clark,Wayne Dickie
-102,,,,4021445,,102,Johanne Clark,Johanne Clark,Carl / Shyama
 103,839JC0905,2024-09-05 0:00,2024-10-05 0:00,4021445,4500720209,103,Johanne Clark,Johanne Clark,Atif Iqbal
 104,885JC0829,2024-08-29 0:00,2024-09-28 0:00,4021445,4500719782,104,Johanne Clark,Johanne Clark,Atif Iqbal
 105,895JC0905,2024-09-05 0:00,2024-10-05 0:00,4021445,4500720194,105,Johanne Clark,Johanne Clark,Atif Iqbal
 106,1627JC0612,2024-06-12 0:00,2024-07-12 0:00,4021445,4500702927,106,Johanne Clark,Johanne Clark,Donny Steptoe
 107,1664JC1203,2024-12-03 0:00,2025-01-02 0:00,4021445,4500740533,107,Johanne Clark,Johanne Clark,Atif Iqbal
-108,,,,4021445,,108,Johanne Clark,Johanne Clark,Lara Mepham
 109,2639JC1206,2024-12-06 0:00,2025-01-05 0:00,4021445,,109,Johanne Clark,Johanne Clark,
 110,2639C0506,2024-05-06 0:00,2024-06-05 0:00,4021445,4500696350,110,Johanne Clark,Johanne Clark,Wayne Dickie
-111,,,,4021445,4500700939,111,Johanne Clark,Johanne Clark,Donny Steptoe
 112,3804JC0823,2024-08-23 0:00,2024-09-22 0:00,4021445,,112,Johanne Clark,Johanne Clark,Sam Catalano
 113,7156JC0418,2024-04-18 0:00,2024-05-18 0:00,4021445,4500690254,113,Johanne Clark,Johanne Clark,Steve Rogano
 114,7179JC0529,2024-05-29 0:00,2024-06-28 0:00,4021445,4500697698,114,Johanne Clark,Johanne Clark,Rob Lefler
@@ -129,7 +122,6 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 128,537JC1105,2024-11-05 0:00,2024-12-05 0:00,4021445,4500734486,128,Johanne Clark,Johanne Clark,Steve Rogano
 129,538JC1212,2023-12-12 0:00,2024-01-11 0:00,4021445,4500664717,129,Johanne Clark,Johanne Clark,Wayne Dickie
 130,539JC0927,2024-09-27 0:00,2024-10-27 0:00,4021445,4500726833,130,Johanne Clark,Johanne Clark,Atif Iqbal
-131,,,,4021445,4500719793,131,Johanne Clark,Johanne Clark,Jeff McLeod
 132,563JC0312,2024-03-12 0:00,2024-04-11 0:00,4021445,4500681478,132,Johanne Clark,Johanne Clark,Randy Shippet
 133,580JC1122,2023-11-22 0:00,2023-12-22 0:00,4021445,4500660273,133,Johanne Clark,Johanne Clark,Randy Shippet
 134,4558JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500739561,134,Johanne Clark,Johanne Clark,Lara Mepham
@@ -138,7 +130,6 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 137,7553JC0806,2024-08-06 0:00,2024-09-05 0:00,4021445,4500715040,137,Johanne Clark,Johanne Clark,Carl Chamberland
 138,7561JC1017,2024-10-17 0:00,2024-11-16 0:00,4021445,4500729033,138,Johanne Clark,Johanne Clark,Carl Chamberland
 139,7564JC0418,2024-04-18 0:00,2024-05-18 0:00,4021445,4500689932,139,Johanne Clark,Johanne Clark,Francois Faubert
-140,,,,4021445,4500690953,140,Johanne Clark,Johanne Clark,Dom Faucher
 141,7567JC0621,2024-06-21 0:00,2024-07-21 0:00,4021445,4500703456,141,Johanne Clark,Johanne Clark,Carl Chamberland
 142,7567JC0812,2024-08-12 0:00,2024-09-11 0:00,4021445,4500714301,142,Johanne Clark,Johanne Clark,Carl Chamberland
 143,7232JC1008,2024-10-08 0:00,2024-11-07 0:00,4021445,4500728366,143,Johanne Clark,Johanne Clark,Carl Chamberland
@@ -147,11 +138,9 @@ ID,QuoteNum,QuoteDate,QuoteExpiry,SAPVendor,PurcahseOrder,CompStoreID,PreparedBy
 146,7576JC1105,2024-11-05 0:00,2024-12-05 0:00,4021445,4500734797,146,Johanne Clark,Johanne Clark,Andre Medeiros
 147,7657JC0516,2024-05-16 0:00,2024-06-15 0:00,4021445,4500697582,147,Johanne Clark,Johanne Clark,Carl Chamberland
 148,7945JC0904,2024-09-04 0:00,2024-10-04 0:00,4021445,4500718525,148,Johanne Clark,Johanne Clark,Francois Faubert
-149,,,,4021445,4500723991,149,Johanne Clark,Johanne Clark,Francois Faubert
 150,7959JC1031,2024-10-31 0:00,2024-11-30 0:00,4021445,4500732131,150,Johanne Clark,Johanne Clark,Andre Medeiros
 151,7960JC0730,2024-07-30 0:00,2024-08-29 0:00,4021445,4500713821,151,Johanne Clark,Johanne Clark,Andre Medeiros
 152,7972JC1120,2024-11-20 0:00,2024-12-20 0:00,4021445,4500738414,152,Johanne Clark,Johanne Clark,Andre Medeiros
-153,,,,4021445,4500737593,153,Johanne Clark,Johanne Clark,Dom Faucher
 154,8653JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500739689,154,Johanne Clark,Johanne Clark,Lara Mepham
 155,8662JC1127,2024-11-27 0:00,2024-12-27 0:00,4021445,4500739689,155,Johanne Clark,Johanne Clark,Lara Mepham
 156,8663JC1105,2024-11-05 0:00,2024-12-05 0:00,4021445,,156,Johanne Clark,Johanne Clark,Daniel Gaudet
