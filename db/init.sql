@@ -371,7 +371,7 @@ IGNORE 1 LINES
  @var_warehouse_location, @var_trailer_or_warehouse, @var_original_order_id, @var_original_trailer_id,
  @var_touched_not_touched, @var_damage, @var_stripped_date, @var_delivery_order_id, @var_delivery_trailer_id,
  @var_days_in_storage, @var_square_footage_of_case, @var_storage_charge, @var_extended_price,
- @var_original_store_tag, @var_lhgable, @var_rhgable, @var_nogable, @var_comp_store_id);
+ @var_original_store_tag, @var_lhgable, @var_rhgable, @var_nogable, @var_comp_store_id)
 SET Store = NULLIF(@var_store, ''),
     ShippingOrderID = NULLIF(@var_shipping_order_id, ''),
     LineUpID = NULLIF(@var_line_ip_id, ''),
