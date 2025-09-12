@@ -365,16 +365,14 @@ INTO TABLE stg_jobinventory
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(ID, @var_quote_id, @var_job_id, @var_store, @var_shipping_order_id, @var_line_ip_id, @var_case_id, @var_case_model,
+(ID, QuoteID, JobID, @var_store, @var_shipping_order_id, @var_line_ip_id, @var_case_id, @var_case_model,
  @var_case_serial_num, @var_department, @var_estimated_ship_date, @var_warehouse_arrival_date,
  @var_storage_start_date, @var_storage_end_date, @var_scheduled_date, @var_scheduled_time,
  @var_warehouse_location, @var_trailer_or_warehouse, @var_original_order_id, @var_original_trailer_id,
  @var_touched_not_touched, @var_damage, @var_stripped_date, @var_delivery_order_id, @var_delivery_trailer_id,
  @var_days_in_storage, @var_square_footage_of_case, @var_storage_charge, @var_extended_price,
  @var_original_store_tag, @var_lhgable, @var_rhgable, @var_nogable, @var_comp_store_id);
-SET QuoteID = NULLIF(@var_quote_id, ''),
-    JobID = NULLIF(@var_job_id, ''),
-    Store = NULLIF(@var_store, ''),
+SET Store = NULLIF(@var_store, ''),
     ShippingOrderID = NULLIF(@var_shipping_order_id, ''),
     LineUpID = NULLIF(@var_line_ip_id, ''),
     CaseID = NULLIF(@var_case_id, ''),
