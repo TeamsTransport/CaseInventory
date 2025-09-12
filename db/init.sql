@@ -74,9 +74,7 @@ CREATE TABLE case_models (
     model_name            VARCHAR(255) NOT NULL,
     width_inches          DECIMAL(10,2) NOT NULL,
     depth_inches          DECIMAL(10,2) NOT NULL,
-    -- Optional: space required in warehouse if it differs from geometric sqft
     warehouse_space_sqft  DECIMAL(10,2) NULL,
-    -- Normalized: compute sqft; VIRTUAL avoids data duplication but is queryable
     sqft                  DECIMAL(12,4)
         AS ((width_inches * depth_inches) / 144.0) VIRTUAL,
     sqft_rounded          INT
@@ -236,8 +234,13 @@ CREATE TABLE stg_casemodels (
     `Width (inches)` DECIMAL(10,2),
     `Depth (inches)` DECIMAL(10,2),
     `Bolea Square Footage` VARCHAR(255),
-    `Square Footage with Space in Warehouse` DECIMAL(10,2)
+    `Square Footage with Space in Warehouse` DECIMAL(10,2),
+    `Case Size` VARCHAR(50),
+    `AltDescription` VARCHAR(255),
+    `Square Footage` DECIMAL(10,2),
+    `Rounded Square Footage` DECIMAL(10,2)
 ) ENGINE=InnoDB;
+
 
 CREATE TABLE stg_quote (
     ID INT UNSIGNED PRIMARY KEY,
@@ -329,7 +332,8 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (ID, `Case Model`, `Width (inches)`, `Depth (inches)`,
- `Bolea Square Footage`, `Square Footage with Space in Warehouse`);
+ `Bolea Square Footage`, `Square Footage with Space in Warehouse`,
+ `Case Size`, `AltDescription`, `Square Footage`, `Rounded Square Footage`);
 
 LOAD DATA INFILE '/import/JODB-tbl_Quote.csv'
 INTO TABLE stg_quote
