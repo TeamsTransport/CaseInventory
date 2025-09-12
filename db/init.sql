@@ -349,20 +349,58 @@ FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (ID, QuoteID, CompStoreID, ShipOrigin, ShipDestination, Equipment,
- NumOfLoads, LineHaul, Fuel, Accessorials, IntraCanada, ExtendedPrice);
+ NumOfLoads, @var_linehaul, @var_fuel, @var_accessorials, @var_intracanada, @var_extendedprice)
+SET LineHaul = NULLIF(@var_linehaul, ''),
+    Fuel = NULLIF(@var_fuel, ''),
+    Accessorials = NULLIF(@var_accessorials, ''),
+    IntraCanada = NULLIF(@var_intracanada, ''),
+    ExtendedPrice = NULLIF(@var_extendedprice, '');
 
 LOAD DATA INFILE '/import/JODB-tbl_JobInventory.csv'
 INTO TABLE stg_jobinventory
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(ID, QuoteID, JobID, Store, ShippingOrderID, LineUpID, CaseID, CaseModel,
- CaseSerialNum, Department, EstimatedShipDate, WarehouseArrivalDate,
- StorageStartDate, StorageEndDate, ScheduledDate, ScheduledTime,
- WarehouseLocation, TrailerOrWarehouse, OriginalOrderID, OriginalTrailerID,
- TouchedNotTouched, Damage, StrippedDate, DeliveryOrderID, DeliveryTrailerID,
- DaysInStorage, SquareFootageofCase, StorageCharge, ExtendedPrice,
- OriginalStoreTag, LHGable, RHGable, NoGable, CompStoreID);
+(ID, @var_quote_id, @var_job_id, @var_store, @var_shipping_order_id, @var_line_ip_id, @var_case_id, @var_case_model,
+ @var_case_serial_num, @var_department, @var_estimated_ship_date, @var_warehouse_arrival_date,
+ @var_storage_start_date, @var_storage_end_date, @var_scheduled_date, @var_scheduled_time,
+ @var_warehouse_location, @var_trailer_or_warehouse, @var_original_order_id, @var_original_trailer_id,
+ @var_touched_not_touched, @var_damage, @var_stripped_date, @var_delivery_order_id, @var_delivery_trailer_id,
+ @var_days_in_storage, @var_square_footage_of_case, @var_storage_charge, @var_extended_price,
+ @var_original_store_tag, @var_lhgable, @var_rhgable, @var_nogable, @var_comp_store_id);
+SET QuoteID = NULLIF(@var_quote_id, ''),
+    JobID = NULLIF(@var_job_id, ''),
+    Store = NULLIF(@var_store, ''),
+    ShippingOrderID = NULLIF(@var_shipping_order_id, ''),
+    LineUpID = NULLIF(@var_line_ip_id, ''),
+    CaseID = NULLIF(@var_case_id, ''),
+    CaseModel = NULLIF(@var_case_model, ''),
+    CaseSerialNum = NULLIF(@var_case_serial_num, ''),
+    Department = NULLIF(@var_department, ''),
+    EstimatedShipDate = NULLIF(@var_estimated_ship_date, ''),
+    WarehouseArrivalDate = NULLIF(@var_warehouse_arrival_date, ''),
+    StorageStartDate = NULLIF(@var_storage_start_date, ''),
+    StorageEndDate = NULLIF(@var_storage_end_date, ''),
+    ScheduledDate = NULLIF(@var_scheduled_date, ''),
+    ScheduledTime = NULLIF(@var_scheduled_time, ''),
+    WarehouseLocation = NULLIF(@var_warehouse_location, ''),
+    TrailerOrWarehouse = NULLIF(@var_trailer_or_warehouse, ''),
+    OriginalOrderID = NULLIF(@var_original_order_id, ''),
+    OriginalTrailerID = NULLIF(@var_original_trailer_id, ''),
+    TouchedNotTouched = NULLIF(@var_touched_not_touched, ''),
+    Damage = NULLIF(@var_damage, ''),
+    StrippedDate = NULLIF(@var_stripped_date, ''),
+    DeliveryOrderID = NULLIF(@var_delivery_order_id, ''),
+    DeliveryTrailerID = NULLIF(@var_delivery_trailer_id, ''),
+    DaysInStorage = NULLIF(@var_days_in_storage, ''),
+    SquareFootageofCase = NULLIF(@var_square_footage_of_case, ''),
+    StorageCharge = NULLIF(@var_storage_charge, ''),
+    ExtendedPrice = NULLIF(@var_extended_price, ''),
+    OriginalStoreTag = NULLIF(@var_original_store_tag, ''),
+    LHGable = NULLIF(@var_lhgable, ''),
+    RHGable = NULLIF(@var_rhgable, ''),
+    NoGable = NULLIF(@var_nogable, ''),
+    CompStoreID = NULLIF(@var_comp_store_id, '');
 
 -- ======================================================================
 -- MIGRATION: STAGING -> NORMALIZED
