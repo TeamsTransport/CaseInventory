@@ -348,9 +348,13 @@ INTO TABLE stg_jobcostestimate
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(ID, QuoteID, CompStoreID, ShipOrigin, ShipDestination, Equipment,
- NumOfLoads, @var_linehaul, @var_fuel, @var_accessorials, @var_intracanada, @var_extendedprice)
-SET LineHaul = NULLIF(@var_linehaul, ''),
+(ID, QuoteID, CompStoreID, @var_ship_origin, @var_ship_destination, @var_equipment,
+ @var_num_of_Loads, @var_linehaul, @var_fuel, @var_accessorials, @var_intracanada, @var_extendedprice)
+SET ShipOrigin = NULLIF(@var_ship_origin, ''),
+    ShipDestination = NULLIF(@var_ship_destination, ''),
+    Equipment = NULLIF(@var_equipment, ''),
+    NumOfLoads = NULLIF(@var_num_of_Loads, ''),
+    LineHaul = NULLIF(@var_linehaul, ''),
     Fuel = NULLIF(@var_fuel, ''),
     Accessorials = NULLIF(@var_accessorials, ''),
     IntraCanada = NULLIF(@var_intracanada, ''),
