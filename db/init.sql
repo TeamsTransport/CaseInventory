@@ -337,8 +337,10 @@ INTO TABLE stg_quote
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES
-(ID, QuoteNum, QuoteDate, QuoteExpiry, SAPVendor, PurchaseOrder,
- CompStoreID, PreparedBy, SalesRep, StoreJobPM);
+(ID, QuoteNum, @var_quote_date, @var_quote_expiry, SAPVendor, PurchaseOrder,
+ CompStoreID, PreparedBy, SalesRep, StoreJobPM)
+SET QuoteDate = STR_TO_DATE(@var_quote_date, '%m/%d/%Y %H:%i'),
+    QuoteExpiry = STR_TO_DATE(@var_quote_expiry, '%m/%d/%Y %H:%i');
 
 LOAD DATA INFILE '/import/JODB-tbl_JobCostEstimate.csv'
 INTO TABLE stg_jobcostestimate
