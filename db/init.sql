@@ -335,6 +335,7 @@ IGNORE 1 LINES
  `Bolea Square Footage`, `Square Footage with Space in Warehouse`,
  `Case Size`, `AltDescription`, `Square Footage`, `Rounded Square Footage`);
 
+
 LOAD DATA INFILE '/import/JODB-tbl_Quote.csv'
 INTO TABLE stg_quote
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
