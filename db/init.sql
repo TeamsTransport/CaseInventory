@@ -27,22 +27,22 @@ DROP TABLE IF EXISTS addresses;
 
 /* Addresses are shared by Companies and Stores */
 CREATE TABLE addresses (
-    address_id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    street           VARCHAR(255) NOT NULL,
-    city             VARCHAR(128) NOT NULL,
-    province         VARCHAR(64)  NOT NULL,
-    postal_code      VARCHAR(16)  NOT NULL,
-    created_at       TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    address_id  INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    street      VARCHAR(255) NOT NULL,
+    city        VARCHAR(128) NOT NULL,
+    province    VARCHAR(64)  NOT NULL,
+    postal_code VARCHAR(16)  NOT NULL,
+    created_at  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (address_id),
     -- Ensures de-duplication on normalized components
     UNIQUE KEY uq_address_components (street, city, province, postal_code)
 ) ENGINE=InnoDB;
 
 CREATE TABLE companies (
-    company_id       INT UNSIGNED NOT NULL,
-    company_name     VARCHAR(255) NOT NULL,
-    address_id       INT UNSIGNED NULL,
-    created_at       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    company_id   INT UNSIGNED NOT NULL,
+    company_name VARCHAR(255) NOT NULL,
+    address_id   INT UNSIGNED NULL,
+    created_at   TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (company_id),
     KEY ix_companies_address (address_id),
     CONSTRAINT fk_companies_address
@@ -52,11 +52,11 @@ CREATE TABLE companies (
 
 /* Stores (locations) belong to a company and can have their own address */
 CREATE TABLE comp_stores (
-    store_id         INT UNSIGNED NOT NULL,
-    company_id       INT UNSIGNED NOT NULL,
-    store_name       VARCHAR(255) NOT NULL,
-    address_id       INT UNSIGNED NULL,
-    created_at       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    store_id   INT UNSIGNED NOT NULL,
+    company_id INT UNSIGNED NOT NULL,
+    store_name VARCHAR(255) NOT NULL,
+    address_id INT UNSIGNED NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (store_id),
     KEY ix_stores_company (company_id),
     KEY ix_stores_address (address_id),
@@ -74,7 +74,7 @@ CREATE TABLE case_models (
     model_name            VARCHAR(255) NOT NULL,
     width_inches          DECIMAL(10,2) NOT NULL,
     depth_inches          DECIMAL(10,2) NOT NULL,
-    warehouse_space_sqft  DECIMAL(10,2) NULL,
+    warehouse_space_sqft  DECIMAL(10,2) NOT NULL,
     sqft                  DECIMAL(12,4)
         AS ((width_inches * depth_inches) / 144.0) VIRTUAL,
     sqft_rounded          INT
@@ -87,17 +87,17 @@ CREATE TABLE case_models (
 
 /* Quotes reference stores; business columns preserved */
 CREATE TABLE quotes (
-    quote_id         INT UNSIGNED NOT NULL,
-    store_id         INT UNSIGNED NOT NULL,
-    quote_num        VARCHAR(255) NULL,
-    quote_date       DATE NULL,
-    quote_expiry     DATE NULL,
-    sap_vendor       BIGINT NULL,
-    purchase_order   BIGINT NULL,
-    prepared_by      VARCHAR(255) NULL,
-    sales_rep        VARCHAR(255) NULL,
-    store_job_pm     VARCHAR(255) NULL,
-    created_at       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    quote_id       INT UNSIGNED NOT NULL,
+    store_id       INT UNSIGNED NOT NULL,
+    quote_num      VARCHAR(255) NULL,
+    quote_date     DATE NULL,
+    quote_expiry   DATE NULL,
+    sap_vendor     BIGINT NULL,
+    purchase_order BIGINT NULL,
+    prepared_by    VARCHAR(255) NULL,
+    sales_rep      VARCHAR(255) NULL,
+    store_job_pm   VARCHAR(255) NULL,
+    created_at     TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (quote_id),
     KEY ix_quotes_store (store_id),
     KEY ix_quotes_quote_num (quote_num),
@@ -116,10 +116,10 @@ CREATE TABLE job_cost_estimates (
     equipment        VARCHAR(255) NULL,
     num_of_loads     INT NULL,
     linehaul         DECIMAL(12,2) NULL,
-    fuel_pct         DECIMAL(5,2) NULL,        -- stored as percent (e.g., 12.5)
+    fuel_pct         DECIMAL(5,2) NULL,
     accessorials     DECIMAL(12,2) NULL,
     intra_canada     TINYINT(1) NULL,
-    extended_price   DECIMAL(12,2) NULL,       -- as stored; can compute in apps
+    extended_price   DECIMAL(12,2) NULL,
     created_at       TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (job_id),
     KEY ix_jobs_quote (quote_id),
@@ -134,42 +134,41 @@ CREATE TABLE job_cost_estimates (
 
 /* Inventory lines belong to a job; link to case model to avoid duplicates */
 CREATE TABLE job_inventory (
-    job_inventory_id  INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    job_id            INT UNSIGNED NOT NULL,
-    store_id          INT UNSIGNED NOT NULL,
-    case_model_id     INT UNSIGNED NULL,
-    case_serial_num   VARCHAR(255) NULL,
-    department        VARCHAR(255) NULL,
-    estimated_ship_date DATE NULL,
+    job_inventory_id       INT UNSIGNED NOT NULL AUTO_INCREMENT,
+    quote_id               INT NOT NULL,
+    job_id                 INT UNSIGNED NOT NULL,
+    store_id               INT UNSIGNED NOT NULL,
+    shipping_order_id      VARCHAR(255) NULL,
+    line_up_id             VARCHAR(255) NULL,
+    case_model_id          INT UNSIGNED NULL,
+    department             VARCHAR(255) NULL,
+    estimated_ship_date    DATE NULL,
     warehouse_arrival_date DATE NULL,
-    storage_start_date DATE NULL,
-    storage_end_date   DATE NULL,
-    scheduled_date     DATE NULL,
-    scheduled_time     VARCHAR(64) NULL,
-    warehouse_location VARCHAR(255) NULL,
-    trailer_or_warehouse VARCHAR(255) NULL,
-    original_order_id  VARCHAR(255) NULL,
-    original_trailer_id VARCHAR(255) NULL,
-    touched_not_touched VARCHAR(255) NULL,
-    stripped_date       VARCHAR(255) NULL,
-    delivery_order_id   VARCHAR(255) NULL,
-    delivery_trailer_id VARCHAR(255) NULL,
-    days_in_storage     INT NULL,
-    storage_charge      DECIMAL(12,2) NULL,
-    extended_price      DECIMAL(12,2) NULL,
-    original_store_tag  VARCHAR(255) NULL,
-    lh_gable            TINYINT(1) NULL,
-    rh_gable            TINYINT(1) NULL,
-    no_gable            TINYINT(1) NULL,
-    created_at          TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
+    storage_start_date     DATE NULL,
+    storage_end_date       DATE NULL,
+    scheduled_date         DATE NULL,
+    scheduled_time         VARCHAR(64) NULL,
+    warehouse_location     VARCHAR(255) NULL,
+    trailer_or_warehouse   VARCHAR(255) NULL,
+    original_order_id      VARCHAR(255) NULL,
+    original_trailer_id    VARCHAR(255) NULL,
+    touched_not_touched    VARCHAR(255) NULL,
+    damage                 TINYINT(1) NULL,
+    stripped_date          VARCHAR(255) NULL,
+    delivery_order_id      VARCHAR(255) NULL,
+    delivery_trailer_id    VARCHAR(255) NULL,
+    storage_charge         DECIMAL(12,2) NULL,
+    original_store_tag     VARCHAR(255) NULL,
+    lh_gable               TINYINT(1) NULL,
+    rh_gable               TINYINT(1) NULL,
+    no_gable               TINYINT(1) NULL,
+    created_at             TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     PRIMARY KEY (job_inventory_id),
     KEY ix_inv_job (job_id),
     KEY ix_inv_store (store_id),
     KEY ix_inv_case_serial (case_serial_num),
     KEY ix_inv_delivery (delivery_order_id),
     KEY ix_inv_shipping (original_order_id),
-
     CONSTRAINT fk_inv_job
       FOREIGN KEY (job_id) REFERENCES job_cost_estimates(job_id)
       ON UPDATE CASCADE ON DELETE CASCADE,
@@ -179,16 +178,12 @@ CREATE TABLE job_inventory (
     CONSTRAINT fk_inv_case_model
       FOREIGN KEY (case_model_id) REFERENCES case_models(case_model_id)
       ON UPDATE CASCADE ON DELETE SET NULL,
-
-    -- Optional: keep values boolean-ish if you want stricter typing
     CONSTRAINT chk_gable_boolean_values
       CHECK (
         (lh_gable IN (0,1) OR lh_gable IS NULL) AND
         (rh_gable IN (0,1) OR rh_gable IS NULL) AND
         (no_gable IN (0,1)  OR no_gable  IS NULL)
       ),
-
-    -- Required: ensure EXACTLY ONE of the three is true (NULL counts as 0)
     CONSTRAINT chk_gable_exactly_one
       CHECK (
         COALESCE(lh_gable,0) + COALESCE(rh_gable,0) + COALESCE(no_gable,0) = 1
@@ -244,12 +239,12 @@ CREATE TABLE stg_casemodels (
 
 CREATE TABLE stg_quote (
     ID INT UNSIGNED PRIMARY KEY,
-    QuoteNum VARCHAR(255),
+    QuoteNum VARCHAR(255) NULL,
     QuoteDate DATE,
     QuoteExpiry DATE,
     SAPVendor BIGINT,
-    PurchaseOrder BIGINT,
-    CompStoreID INT,               -- Access had double; we coerce to INT
+    PurchaseOrder BIGINT NULL,
+    CompStoreID INT,
     PreparedBy VARCHAR(255),
     SalesRep VARCHAR(255),
     StoreJobPM VARCHAR(255)
@@ -259,52 +254,52 @@ CREATE TABLE stg_jobcostestimate (
     ID INT UNSIGNED PRIMARY KEY,
     QuoteID INT,
     CompStoreID INT,
-    ShipOrigin VARCHAR(255),
-    ShipDestination VARCHAR(255),
-    Equipment VARCHAR(255),
-    NumOfLoads INT,
-    LineHaul DECIMAL(12,2),
-    Fuel DECIMAL(6,3),            -- as decimal percent (e.g., 0.125 or 12.5) - we’ll normalize
-    Accessorials DECIMAL(12,2),
-    IntraCanada TINYINT(1),
-    ExtendedPrice DECIMAL(12,2)
+    ShipOrigin VARCHAR(255) NULL,
+    ShipDestination VARCHAR(255) NULL,
+    Equipment VARCHAR(255) NULL,
+    NumOfLoads INT NULL,
+    LineHaul DECIMAL(12,2) NULL,
+    Fuel DECIMAL(6,3) NULL,            -- as decimal percent (e.g., 0.125 or 12.5) - we’ll normalize
+    Accessorials DECIMAL(12,2) NULL,
+    IntraCanada TINYINT(1) NULL,
+    ExtendedPrice DECIMAL(12,2) NULL
 ) ENGINE=InnoDB;
 
 CREATE TABLE stg_jobinventory (
     ID INT UNSIGNED PRIMARY KEY,
-    QuoteID INT,
-    JobID INT,
-    Store VARCHAR(255),
-    ShippingOrderID VARCHAR(255),
-    LineUpID VARCHAR(255),
-    CaseID VARCHAR(255),
-    CaseModel VARCHAR(255),
-    CaseSerialNum VARCHAR(255),
-    Department VARCHAR(255),
-    EstimatedShipDate DATE,
-    WarehouseArrivalDate DATE,
-    StorageStartDate DATE,
-    StorageEndDate DATE,
-    ScheduledDate DATE,
-    ScheduledTime VARCHAR(64),
-    WarehouseLocation VARCHAR(255),
-    TrailerOrWarehouse VARCHAR(255),
-    OriginalOrderID VARCHAR(255),
-    OriginalTrailerID VARCHAR(255),
-    TouchedNotTouched VARCHAR(255),
-    Damage TINYINT(1),
-    StrippedDate VARCHAR(255),
-    DeliveryOrderID VARCHAR(255),
-    DeliveryTrailerID VARCHAR(255),
-    DaysInStorage INT,
-    SquareFootageofCase INT,
-    StorageCharge DECIMAL(12,2),
-    ExtendedPrice DECIMAL(12,2),
-    OriginalStoreTag VARCHAR(255),
-    LHGable TINYINT(1),
-    RHGable TINYINT(1),
-    NoGable TINYINT(1),
-    CompStoreID INT
+    QuoteID INT NULL,
+    JobID INT NULL,
+    Store VARCHAR(255) NULL,
+    ShippingOrderID VARCHAR(255) NULL,
+    LineUpID VARCHAR(255) NULL,
+    CaseID VARCHAR(255) NULL,
+    CaseModel VARCHAR(255) NULL,
+    CaseSerialNum VARCHAR(255) NULL,
+    Department VARCHAR(255) NULL,
+    EstimatedShipDate DATE NULL,
+    WarehouseArrivalDate DATE NULL,
+    StorageStartDate DATE NULL,
+    StorageEndDate DATE NULL,
+    ScheduledDate DATE NULL,
+    ScheduledTime VARCHAR(64) NULL,
+    WarehouseLocation VARCHAR(255) NULL,
+    TrailerOrWarehouse VARCHAR(255) NULL,
+    OriginalOrderID VARCHAR(255) NULL,
+    OriginalTrailerID VARCHAR(255) NULL,
+    TouchedNotTouched VARCHAR(255) NULL,
+    Damage TINYINT(1) NULL,
+    StrippedDate VARCHAR(255) NULL,
+    DeliveryOrderID VARCHAR(255) NULL,
+    DeliveryTrailerID VARCHAR(255) NULL,
+    DaysInStorage INT NULL,
+    SquareFootageofCase INT NULL,
+    StorageCharge DECIMAL(12,2) NULL,
+    ExtendedPrice DECIMAL(12,2) NULL,
+    OriginalStoreTag VARCHAR(255) NULL,
+    LHGable TINYINT(1) NULL,
+    RHGable TINYINT(1) NULL,
+    NoGable TINYINT(1) NULL,
+    CompStoreID INT NULL
 ) ENGINE=InnoDB;
 
 -- ======================================================================
