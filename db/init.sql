@@ -503,16 +503,19 @@ FROM stg_jobcostestimate;
 
 /* 8) Job Inventory (new surrogate key; link to job + store; resolve case_model_id by name) */
 INSERT INTO job_inventory (
-    quote_id, job_id, store_id, shipping_order_id, line_up_id, case_model_id, 
+    quote_id, job_id, store_id, shipping_order_id, line_up_id, case_model_id,
     case_serial_num, department, estimated_ship_date, warehouse_arrival_date,
-    storage_start_date, storage_end_date, scheduled_date, scheduled_time, 
+    storage_start_date, storage_end_date, scheduled_date, scheduled_time,
     warehouse_location, trailer_or_warehouse, original_order_id, original_trailer_id,
     touched_not_touched, damage, stripped_date, delivery_order_id, delivery_trailer_id,
     storage_charge, original_store_tag, lh_gable, rh_gable, no_gable
 )
 SELECT
-    s.JobID,
-    j.store_id,                         -- derive store from job for consistency
+    s.QuoteID,  -- Added missing quote_id
+    s.JobID,    -- Added missing job_id
+    j.store_id,                         
+    TRIM(s.ShippingOrderID),  -- Added shipping_order_id
+    TRIM(s.LineUpID),         -- Added line_up_id
     cm.case_model_id,
     TRIM(s.CaseSerialNum),
     TRIM(s.Department),
