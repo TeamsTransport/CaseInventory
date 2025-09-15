@@ -559,7 +559,7 @@ LEFT JOIN case_models cm
 -- ======================================================================
 -- SANITY CHECKS (row counts)
 -- ======================================================================
-SELECT 'companies' AS table_name, COUNT(*) AS rows FROM companies
+SELECT 'companies' AS table_name, COUNT(*) AS row_count FROM companies
 UNION ALL
 SELECT 'comp_stores', COUNT(*) FROM comp_stores
 UNION ALL
