@@ -536,14 +536,25 @@ SELECT
     TRIM(s.DeliveryTrailerID),
     s.StorageCharge,
     TRIM(s.OriginalStoreTag),
-    s.LHGable,
-    s.RHGable,
-    s.NoGable
+    -- Handle gable constraints: ensure exactly one is set to 1
+    CASE 
+        WHEN s.LHGable = 1 AND COALESCE(s.RHGable, 0) = 0 AND COALESCE(s.NoGable, 0) = 0 THEN 1
+        ELSE 0
+    END AS lh_gable,
+    CASE 
+        WHEN s.RHGable = 1 AND COALESCE(s.LHGable, 0) = 0 AND COALESCE(s.NoGable, 0) = 0 THEN 1
+        ELSE 0
+    END AS rh_gable,
+    CASE 
+        WHEN s.NoGable = 1 AND COALESCE(s.LHGable, 0) = 0 AND COALESCE(s.RHGable, 0) = 0 THEN 1
+        WHEN COALESCE(s.LHGable, 0) = 0 AND COALESCE(s.RHGable, 0) = 0 AND COALESCE(s.NoGable, 0) = 0 THEN 1
+        ELSE 0
+    END AS no_gable
 FROM stg_jobinventory s
 JOIN job_cost_estimates j
   ON j.job_id = s.JobID
 LEFT JOIN case_models cm
-  ON cm.model_name = TRIM(COALESCE(s.CaseModel,''));   -- resolve by model name
+  ON cm.model_name = TRIM(COALESCE(s.CaseModel,''));
 
 -- ======================================================================
 -- SANITY CHECKS (row counts)
