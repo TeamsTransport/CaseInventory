@@ -1,0 +1,188 @@
+// src/components/CaseModels.tsx
+import { useEffect, useState } from "react";
+
+const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:8081";
+
+type CaseModel = {
+  id: number;
+  model_name: string;
+  width_inches: number;
+  depth_inches: number;
+  sqft: number;
+  sqft_rounded: number;
+  warehouse_space_sqft: number;
+  created_at: string;
+};
+
+export default function CaseModels() {
+  const [models, setModels] = useState<CaseModel[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [selectedModel, setSelectedModel] = useState<CaseModel | null>(null);
+  const [showModal, setShowModal] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  const fetchModels = () => {
+    fetch(`${API}/api/case-models`)
+      .then((res) => res.json())
+      .then(setModels)
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchModels();
+  }, []);
+
+  const handleDelete = (id: number) => {
+    if (!confirm("Are you sure you want to delete this model?")) return;
+    fetch(`${API}/api/case-models/${id}`, { method: "DELETE" }).then(() =>
+      fetchModels()
+    );
+  };
+
+  const handleSave = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    const method = isEditing ? "PUT" : "POST";
+    const url = isEditing
+      ? `${API}/api/case-models/${selectedModel?.id}`
+      : `${API}/api/case-models`;
+
+    fetch(url, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    }).then(() => {
+      setShowModal(false);
+      setSelectedModel(null);
+      fetchModels();
+    });
+  };
+
+  const openAddModal = () => {
+    setSelectedModel(null);
+    setIsEditing(false);
+    setShowModal(true);
+  };
+
+  const openEditModal = (model: CaseModel) => {
+    setSelectedModel(model);
+    setIsEditing(true);
+    setShowModal(true);
+  };
+
+  return (
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Case Models</h1>
+      <button className="btn btn-primary mb-4" onClick={openAddModal}>
+        Add Case Model
+      </button>
+
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="table table-zebra w-full">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Model Name</th>
+                <th>Width (in)</th>
+                <th>Depth (in)</th>
+                <th>SqFt</th>
+                <th>Rounded SqFt</th>
+                <th>Warehouse Space</th>
+                <th>Created</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {models.map((model) => (
+                <tr key={model.id}>
+                  <td>{model.id}</td>
+                  <td>{model.model_name}</td>
+                  <td>{model.width_inches}</td>
+                  <td>{model.depth_inches}</td>
+                  <td>{model.sqft}</td>
+                  <td>{model.sqft_rounded}</td>
+                  <td>{model.warehouse_space_sqft}</td>
+                  <td>{new Date(model.created_at).toLocaleString()}</td>
+                  <td>
+                    <button
+                      className="btn btn-sm btn-outline btn-info mr-2"
+                      onClick={() => openEditModal(model)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-sm btn-outline btn-error"
+                      onClick={() => handleDelete(model.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+
+      {showModal && (
+        <dialog className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
+              {isEditing ? "Edit Case Model" : "Add Case Model"}
+            </h3>
+            <form className="mt-4 space-y-2" onSubmit={handleSave}>
+              <input
+                name="model_name"
+                defaultValue={selectedModel?.model_name || ""}
+                placeholder="Model Name"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="width_inches"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.width_inches || ""}
+                placeholder="Width (inches)"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="depth_inches"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.depth_inches || ""}
+                placeholder="Depth (inches)"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="warehouse_space_sqft"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.warehouse_space_sqft || ""}
+                placeholder="Warehouse Space SqFt"
+                className="input input-bordered w-full"
+              />
+              <div className="modal-action">
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      )}
+    </div>
+  );
+}
