@@ -315,7 +315,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (ID, Company, CompAddress, CompCity, CompProv, CompPostalCode);
 
-LOAD DATA INFILE '/import/JODB-tbl_CompStores.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_CompStores.csv'
 INTO TABLE stg_compstores
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
