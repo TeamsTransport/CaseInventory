@@ -82,7 +82,6 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
             createdAt           sql.NullTime
         )
 
-        // Fixed the Scan parameters to match the declared variables
         err := rows.Scan(&id, &modelName, &widthInches, &depthInches, &sqft, &sqftRounded, &warehouseSpaceSqft, &createdAt)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -114,4 +113,20 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(models)
+}
+
+// Helper functions at the end
+func nullableFloat(f sql.NullFloat64) *float64 {
+    if f.Valid {
+        return &f.Float64
+    }
+    return nil
+}
+
+func nullableInt(i sql.NullInt64) *int {
+    if i.Valid {
+        val := int(i.Int64)
+        return &val
+    }
+    return nil
 }
