@@ -61,7 +61,7 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
     var models []CaseModelResponse
     
     rows, err := h.DB.Query(`
-        SELECT id, model_name, width_inches, depth-inches, sqft, sqft_rounded, warehouse_space_sqft, created_at 
+        SELECT id, model_name, width_inches, depth_inches, sqft, sqft_rounded, warehouse_space_sqft, created_at 
         FROM case_models_stage
     `)
     if err != nil {
@@ -72,14 +72,18 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
 
     for rows.Next() {
         var (
-            id           int
-            modelName    string
-            width, depth, sqft, warehouse sql.NullFloat64
-            sqftRounded  sql.NullInt64
-            createdAt    sql.NullTime
+            id                  int
+            modelName           string
+            widthInches         sql.NullFloat64
+            depthInches         sql.NullFloat64
+            sqft                sql.NullFloat64
+            sqftRounded         sql.NullInt64
+            warehouseSpaceSqft  sql.NullFloat64
+            createdAt           sql.NullTime
         )
 
-        err := rows.Scan(&id, &modelName, &width, &depth, &sqft, &sqftRounded, &warehouse, &createdAt)
+        // Fixed the Scan parameters to match the declared variables
+        err := rows.Scan(&id, &modelName, &widthInches, &depthInches, &sqft, &sqftRounded, &warehouseSpaceSqft, &createdAt)
         if err != nil {
             http.Error(w, err.Error(), http.StatusInternalServerError)
             return
@@ -94,11 +98,11 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
         models = append(models, CaseModelResponse{
             ID:                 id,
             ModelName:          modelName,
-            WidthInches:        nullableFloat(width),
-            DepthInches:        nullableFloat(depth),
+            WidthInches:        nullableFloat(widthInches),
+            DepthInches:        nullableFloat(depthInches),
             Sqft:               nullableFloat(sqft),
             SqftRounded:        nullableInt(sqftRounded),
-            WarehouseSpaceSqft: nullableFloat(warehouse),
+            WarehouseSpaceSqft: nullableFloat(warehouseSpaceSqft),
             CreatedAt:          createdAtStr,
         })
     }
@@ -110,20 +114,4 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(models)
-}
-
-// Helper functions at the end
-func nullableFloat(f sql.NullFloat64) *float64 {
-    if f.Valid {
-        return &f.Float64
-    }
-    return nil
-}
-
-func nullableInt(i sql.NullInt64) *int {
-    if i.Valid {
-        val := int(i.Int64)
-        return &val
-    }
-    return nil
 }
