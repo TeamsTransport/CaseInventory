@@ -18,9 +18,12 @@ services:
 
   adminer:
     image: adminer:latest
+    container_name: adminer
     restart: unless-stopped
     ports:
       - "8080:8080"
+    volumes:
+      - ./php-local-infile.ini:/usr/local/etc/php/conf.d/php-local-infile.ini:ro
     depends_on:
       - db
 
