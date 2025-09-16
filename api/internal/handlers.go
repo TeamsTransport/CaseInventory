@@ -44,14 +44,14 @@ func (h *Handler) ListCustomers(w http.ResponseWriter, r *http.Request) {
 }
 
 type CaseModel struct {
-    ID                 int     `json:"id"`
-    ModelName          string  `json:"model_name"`
-    WidthInches        float64 `json:"width_inches"`
-    DepthInches        float64 `json:"depth_inches"`
-    Sqft               float64 `json:"sqft"`
-    SqftRounded        int     `json:"sqft_rounded"`
-    WarehouseSpaceSqft float64 `json:"warehouse_space_sqft"`
-    CreatedAt          string  `json:"created_at"`
+    ID                 int             `json:"id"`
+    ModelName          string          `json:"model_name"`
+    WidthInches        sql.NullFloat64 `json:"width_inches"`
+    DepthInches        sql.NullFloat64 `json:"depth_inches"`
+    Sqft               sql.NullFloat64 `json:"sqft"`
+    SqftRounded        sql.NullInt64   `json:"sqft_rounded"`
+    WarehouseSpaceSqft sql.NullFloat64 `json:"warehouse_space_sqft"`
+    CreatedAt          sql.NullTime    `json:"created_at"`
 }
 
 func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
