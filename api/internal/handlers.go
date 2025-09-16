@@ -61,7 +61,7 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
     var models []CaseModelResponse
     
     rows, err := h.DB.Query(`
-        SELECT id, model_name, width, depth, sqft, sqft_rounded, warehouse_space, created_at 
+        SELECT id, model_name, width_inches, depth-inches, sqft, sqft_rounded, warehouse_space_sqft, created_at 
         FROM case_models_stage
     `)
     if err != nil {
