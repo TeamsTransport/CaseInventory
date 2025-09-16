@@ -102,13 +102,12 @@ export default function CaseModels() {
               {models.map((model) => (
                 <tr key={model.id}>
                   <td>{model.id}</td>
-                  <td>{model.model_name}</td>
-                  <td>{model.width_inches}</td>
-                  <td>{model.depth_inches}</td>
-                  <td>{model.sqft}</td>
-                  <td>{model.sqft_rounded}</td>
-                  <td>{model.warehouse_space_sqft}</td>
-                  <td>{new Date(model.created_at).toLocaleString()}</td>
+                  <td>{model.width_inches ?? '—'}</td>
+                  <td>{model.depth_inches ?? '—'}</td>
+                  <td>{model.sqft ?? '—'}</td>
+                  <td>{model.sqft_rounded ?? '—'}</td>
+                  <td>{model.warehouse_space_sqft ?? '—'}</td>
+                  <td>{model.created_at ? new Date(model.created_at).toLocaleString() : '—'}</td>
                   <td>
                     <button
                       className="btn btn-sm btn-outline btn-info mr-2"
