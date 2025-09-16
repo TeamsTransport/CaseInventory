@@ -33,7 +33,7 @@ export default function CaseModels() {
   }, []);
 
   const handleDelete = (id: number) => {
-    if (!confirm("Are you sure you want to delete this model?")) return;
+    if (!confirm("Are you sure you want to delete this Case Model?")) return;
     fetch(`${API}/api/case-models/${id}`, { method: "DELETE" }).then(() =>
       fetchModels()
     );
