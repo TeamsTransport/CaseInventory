@@ -601,8 +601,7 @@ CREATE TABLE IF NOT EXISTS case_models_stage (
     sqft DECIMAL(12,4),
     sqft_rounded INT,
     warehouse_space_sqft DECIMAL(10,2),
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Then load the data
@@ -622,3 +621,9 @@ SET
   sqft                  = CAST(NULLIF(REPLACE(TRIM(@sqft),            ',', ''), '') AS DECIMAL(12,4)),
   sqft_rounded          = CAST(NULLIF(REPLACE(TRIM(@sqft_rounded),    ',', ''), '') AS SIGNED),
   warehouse_space_sqft  = CAST(NULLIF(REPLACE(TRIM(@warehouse_sqft),  ',', ''), '') AS DECIMAL(10,2));
+
+ALTER TABLE case_models_stage
+  MODIFY COLUMN sqft DECIMAL(12,4)
+    AS (ROUND((width_inches * depth_inches) / 144, 4)) PERSISTENT,
+  MODIFY COLUMN sqft_rounded INT
+    AS (ROUND((width_inches * depth_inches) / 144)) PERSISTENT;
