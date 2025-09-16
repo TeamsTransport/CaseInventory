@@ -80,40 +80,7 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(models)
 }
 
-var models []CaseModelResponse
-for rows.Next() {
-    var (
-        id int
-        modelName string
-        width, depth, sqft, warehouse sql.NullFloat64
-        sqftRounded sql.NullInt64
-        createdAt sql.NullTime
-    )
-
-    err := rows.Scan(&id, &modelName, &width, &depth, &sqft, &sqftRounded, &warehouse, &createdAt)
-    if err != nil {
-        http.Error(w, err.Error(), http.StatusInternalServerError)
-        return
-    }
-
-    var createdAtStr *string
-    if createdAt.Valid {
-        s := createdAt.Time.Format(time.RFC3339)
-        createdAtStr = &s
-    }
-
-    models = append(models, CaseModelResponse{
-        ID: id,
-        ModelName: modelName,
-        WidthInches: nullableFloat(width),
-        DepthInches: nullableFloat(depth),
-        Sqft: nullableFloat(sqft),
-        SqftRounded: nullableInt(sqftRounded),
-        WarehouseSpaceSqft: nullableFloat(warehouse),
-        CreatedAt: createdAtStr,
-    })
-}
-
+// Define these helper functions at the package level
 func nullableFloat(f sql.NullFloat64) *float64 {
     if f.Valid {
         return &f.Float64
@@ -127,4 +94,60 @@ func nullableInt(i sql.NullInt64) *int {
         return &val
     }
     return nil
+}
+
+// Your handler function
+func YourHandlerFunction(w http.ResponseWriter, r *http.Request) {
+    var models []CaseModelResponse
+    
+    // Your database query code here
+    rows, err := db.Query("SELECT ...")
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    defer rows.Close()
+    
+    for rows.Next() {
+        var (
+            id int
+            modelName string
+            width, depth, sqft, warehouse sql.NullFloat64
+            sqftRounded sql.NullInt64
+            createdAt sql.NullTime
+        )
+
+        err := rows.Scan(&id, &modelName, &width, &depth, &sqft, &sqftRounded, &warehouse, &createdAt)
+        if err != nil {
+            http.Error(w, err.Error(), http.StatusInternalServerError)
+            return
+        }
+
+        var createdAtStr *string
+        if createdAt.Valid {
+            s := createdAt.Time.Format(time.RFC3339)
+            createdAtStr = &s
+        }
+
+        models = append(models, CaseModelResponse{
+            ID: id,
+            ModelName: modelName,
+            WidthInches: nullableFloat(width),
+            DepthInches: nullableFloat(depth),
+            Sqft: nullableFloat(sqft),
+            SqftRounded: nullableInt(sqftRounded),
+            WarehouseSpaceSqft: nullableFloat(warehouse),
+            CreatedAt: createdAtStr,
+        })
+    }
+    
+    // Check for errors from iterating over rows
+    if err := rows.Err(); err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    
+    // Return the response
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(models)
 }
