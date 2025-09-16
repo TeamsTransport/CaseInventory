@@ -591,3 +591,34 @@ DROP TABLE IF EXISTS stg_casemodels;
 DROP TABLE IF EXISTS stg_quote;
 DROP TABLE IF EXISTS stg_jobcostestimate;
 DROP TABLE IF EXISTS stg_jobinventory;
+
+-- Create the staging table if it doesn't exist
+CREATE TABLE IF NOT EXISTS case_models_stage (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    model_name VARCHAR(255),
+    width_inches DECIMAL(10,2),
+    depth_inches DECIMAL(10,2),
+    sqft DECIMAL(12,4),
+    sqft_rounded INT,
+    warehouse_space_sqft DECIMAL(10,2),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Then load the data
+TRUNCATE TABLE case_models_stage;
+
+LOAD DATA INFILE '/var/lib/mysql-files/import/sqft_chart_of_cases.csv'
+INTO TABLE case_models_stage
+CHARACTER SET utf8mb4
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(@case_model, @width_in, @depth_in, @sqft, @sqft_rounded, @dummy_bolea, @warehouse_sqft, @dummy_case_size, @dummy_alt_desc, @dummy_col10)
+SET
+  model_name            = NULLIF(TRIM(@case_model), ''),
+  width_inches          = CAST(NULLIF(REPLACE(TRIM(@width_in),  ',', ''), '') AS DECIMAL(10,2)),
+  depth_inches          = CAST(NULLIF(REPLACE(TRIM(@depth_in),  ',', ''), '') AS DECIMAL(10,2)),
+  sqft                  = CAST(NULLIF(REPLACE(TRIM(@sqft),            ',', ''), '') AS DECIMAL(12,4)),
+  sqft_rounded          = CAST(NULLIF(REPLACE(TRIM(@sqft_rounded),    ',', ''), '') AS SIGNED),
+  warehouse_space_sqft  = CAST(NULLIF(REPLACE(TRIM(@warehouse_sqft),  ',', ''), '') AS DECIMAL(10,2));
