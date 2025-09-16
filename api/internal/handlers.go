@@ -62,7 +62,7 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
     
     rows, err := h.DB.Query(`
         SELECT id, model_name, width, depth, sqft, sqft_rounded, warehouse_space, created_at 
-        FROM case_models
+        FROM case_models_stage
     `)
     if err != nil {
         http.Error(w, err.Error(), http.StatusInternalServerError)
