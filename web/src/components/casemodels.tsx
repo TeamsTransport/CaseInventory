@@ -5,13 +5,13 @@ const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:8081";
 
 type CaseModel = {
   id: number;
-  model_name: string;
-  width_inches: number;
-  depth_inches: number;
-  sqft: number;
-  sqft_rounded: number;
-  warehouse_space_sqft: number;
-  created_at: string;
+  modelName: string;
+  widthInches?: number;      // Make optional with ? since some might be null
+  depthInches?: number;
+  sqft?: number;
+  sqftRounded?: number;
+  warehouseSpaceSqft?: number;
+  createdAt: string;
 };
 
 export default function CaseModels() {
@@ -102,12 +102,13 @@ export default function CaseModels() {
               {models.map((model) => (
                 <tr key={model.id}>
                   <td>{model.id}</td>
-                  <td>{model.width_inches ?? '—'}</td>
-                  <td>{model.depth_inches ?? '—'}</td>
-                  <td>{model.sqft ?? '—'}</td>
-                  <td>{model.sqft_rounded ?? '—'}</td>
-                  <td>{model.warehouse_space_sqft ?? '—'}</td>
-                  <td>{model.created_at ? new Date(model.created_at).toLocaleString() : '—'}</td>
+                  <td>{model.modelName}</td> {/* Fixed: was missing model name display */}
+                  <td>{model.widthInches?.toFixed(2) ?? '—'}</td>
+                  <td>{model.depthInches?.toFixed(2) ?? '—'}</td>
+                  <td>{model.sqft?.toFixed(4) ?? '—'}</td>
+                  <td>{model.sqftRounded ?? '—'}</td>
+                  <td>{model.warehouseSpaceSqft ?? '—'}</td>
+                  <td>{model.createdAt ? new Date(model.createdAt).toLocaleString() : '—'}</td>
                   <td>
                     <button
                       className="btn btn-sm btn-outline btn-info mr-2"
