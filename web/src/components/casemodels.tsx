@@ -101,7 +101,6 @@ export default function CaseModels() {
                 <th>SqFt</th>
                 <th>Rounded SqFt</th>
                 <th>Warehouse Space</th>
-                <th>Created</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -115,7 +114,6 @@ export default function CaseModels() {
                   <td>{model.sqft?.toFixed(4) ?? '—'}</td>
                   <td>{model.sqftRounded ?? '—'}</td>
                   <td>{model.warehouseSpaceSqft ?? '—'}</td>
-                  <td>{model.createdAt ? new Date(model.createdAt).toLocaleString() : '—'}</td>
                   <td>
                     <div className="flex space-x-2"> {/* Add this wrapper div */}
                       <button
