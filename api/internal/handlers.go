@@ -42,3 +42,40 @@ func (h *Handler) ListCustomers(w http.ResponseWriter, r *http.Request) {
     w.Header().Set("Content-Type","application/json")
     json.NewEncoder(w).Encode(out)
 }
+
+type CaseModel struct {
+    ID                 int     `json:"id"`
+    ModelName          string  `json:"model_name"`
+    WidthInches        float64 `json:"width_inches"`
+    DepthInches        float64 `json:"depth_inches"`
+    Sqft               float64 `json:"sqft"`
+    SqftRounded        int     `json:"sqft_rounded"`
+    WarehouseSpaceSqft float64 `json:"warehouse_space_sqft"`
+    CreatedAt          string  `json:"created_at"`
+}
+
+func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
+    rows, err := h.DB.Query(`
+        SELECT id, model_name, width_inches, depth_inches, sqft, sqft_rounded, warehouse_space_sqft, created_at
+        FROM case_models_stage
+    `)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+    defer rows.Close()
+
+    var models []CaseModel
+    for rows.Next() {
+        var m CaseModel
+        err := rows.Scan(&m.ID, &m.ModelName, &m.WidthInches, &m.DepthInches, &m.Sqft, &m.SqftRounded, &m.WarehouseSpaceSqft, &m.CreatedAt)
+        if err != nil {
+            http.Error(w, err.Error(), http.StatusInternalServerError)
+            return
+        }
+        models = append(models, m)
+    }
+
+    w.Header().Set("Content-Type", "application/json")
+    json.NewEncoder(w).Encode(models)
+}

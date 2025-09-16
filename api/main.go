@@ -27,6 +27,7 @@ func main() {
 
     r.HandleFunc("/api/health", h.Health).Methods("GET")
     r.HandleFunc("/api/customers", h.ListCustomers).Methods("GET")
+    r.HandleFunc("/api/case-models", h.ListCaseModels).Methods("GET")
 
     port := getenv("PORT", "8081")
     log.Println("API listening on :" + port)
