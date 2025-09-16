@@ -6,7 +6,7 @@ const API = import.meta.env.VITE_API_BASE_URL || "http://localhost:8081";
 type CaseModel = {
   id: number;
   modelName: string;
-  widthInches?: number;      // Make optional with ? since some might be null
+  widthInches?: number;
   depthInches?: number;
   sqft?: number;
   sqftRounded?: number;
@@ -43,7 +43,14 @@ export default function CaseModels() {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const payload = Object.fromEntries(formData.entries());
+    
+    // Convert camelCase to snake_case for the backend
+    const payload = {
+      model_name: formData.get('modelName'),
+      width_inches: formData.get('widthInches'),
+      depth_inches: formData.get('depthInches'),
+      warehouse_space_sqft: formData.get('warehouseSpaceSqft'),
+    };
 
     const method = isEditing ? "PUT" : "POST";
     const url = isEditing
@@ -73,7 +80,7 @@ export default function CaseModels() {
     setShowModal(true);
   };
 
-return (
+  return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Case Models</h1>
       <button className="btn btn-primary mb-4" onClick={openAddModal}>
@@ -185,3 +192,4 @@ return (
       )}
     </div>
   );
+}
