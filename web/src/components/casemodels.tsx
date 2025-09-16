@@ -117,18 +117,20 @@ export default function CaseModels() {
                   <td>{model.warehouseSpaceSqft ?? '—'}</td>
                   <td>{model.createdAt ? new Date(model.createdAt).toLocaleString() : '—'}</td>
                   <td>
-                    <button
-                      className="btn btn-sm btn-outline btn-info mr-2"
-                      onClick={() => openEditModal(model)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-sm btn-outline btn-error"
-                      onClick={() => handleDelete(model.id)}
-                    >
-                      Delete
-                    </button>
+                    <div className="flex space-x-2"> {/* Add this wrapper div */}
+                      <button
+                        className="btn btn-sm btn-outline btn-info"
+                        onClick={() => openEditModal(model)}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className="btn btn-sm btn-outline btn-error"
+                        onClick={() => handleDelete(model.id)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
