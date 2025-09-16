@@ -14,7 +14,7 @@ services:
       - db_data:/var/lib/mysql
       - ./mysql-files:/var/lib/mysql-files
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-      - ./db/import:/import:ro
+      - ./db/import:/var/lib/mysql-files/import:ro
     command: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci","--secure-file-priv=/var/lib/mysql-files", "--local-infile=ON"]
 
   adminer:
