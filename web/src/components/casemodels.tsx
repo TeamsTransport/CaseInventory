@@ -73,7 +73,7 @@ export default function CaseModels() {
     setShowModal(true);
   };
 
-  return (
+return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Case Models</h1>
       <button className="btn btn-primary mb-4" onClick={openAddModal}>
@@ -102,7 +102,7 @@ export default function CaseModels() {
               {models.map((model) => (
                 <tr key={model.id}>
                   <td>{model.id}</td>
-                  <td>{model.modelName}</td> {/* Fixed: was missing model name display */}
+                  <td>{model.modelName}</td>
                   <td>{model.widthInches?.toFixed(2) ?? '—'}</td>
                   <td>{model.depthInches?.toFixed(2) ?? '—'}</td>
                   <td>{model.sqft?.toFixed(4) ?? '—'}</td>
@@ -130,56 +130,58 @@ export default function CaseModels() {
         </div>
       )}
 
-{showModal && (
-  <dialog className="modal modal-open">
-    <div className="modal-box">
-      <h3 className="font-bold text-lg">
-        {isEditing ? "Edit Case Model" : "Add Case Model"}
-      </h3>
-      <form className="mt-4 space-y-2" onSubmit={handleSave}>
-        <input
-          name="modelName"  // Changed from model_name to modelName
-          defaultValue={selectedModel?.modelName || ""}
-          placeholder="Model Name"
-          className="input input-bordered w-full"
-        />
-        <input
-          name="widthInches"  // Changed from width_inches to widthInches
-          type="number"
-          step="0.01"
-          defaultValue={selectedModel?.widthInches || ""}
-          placeholder="Width (inches)"
-          className="input input-bordered w-full"
-        />
-        <input
-          name="depthInches"  // Changed from depth_inches to depthInches
-          type="number"
-          step="0.01"
-          defaultValue={selectedModel?.depthInches || ""}
-          placeholder="Depth (inches)"
-          className="input input-bordered w-full"
-        />
-        <input
-          name="warehouseSpaceSqft"  // Changed from warehouse_space_sqft to warehouseSpaceSqft
-          type="number"
-          step="0.01"
-          defaultValue={selectedModel?.warehouseSpaceSqft || ""}
-          placeholder="Warehouse Space SqFt"
-          className="input input-bordered w-full"
-        />
-        <div className="modal-action">
-          <button type="submit" className="btn btn-primary">
-            Save
-          </button>
-          <button
-            type="button"
-            className="btn"
-            onClick={() => setShowModal(false)}
-          >
-            Cancel
-          </button>
-        </div>
-      </form>
+      {showModal && (
+        <dialog className="modal modal-open">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg">
+              {isEditing ? "Edit Case Model" : "Add Case Model"}
+            </h3>
+            <form className="mt-4 space-y-2" onSubmit={handleSave}>
+              <input
+                name="modelName"
+                defaultValue={selectedModel?.modelName || ""}
+                placeholder="Model Name"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="widthInches"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.widthInches || ""}
+                placeholder="Width (inches)"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="depthInches"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.depthInches || ""}
+                placeholder="Depth (inches)"
+                className="input input-bordered w-full"
+              />
+              <input
+                name="warehouseSpaceSqft"
+                type="number"
+                step="0.01"
+                defaultValue={selectedModel?.warehouseSpaceSqft || ""}
+                placeholder="Warehouse Space SqFt"
+                className="input input-bordered w-full"
+              />
+              <div className="modal-action">
+                <button type="submit" className="btn btn-primary">
+                  Save
+                </button>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </dialog>
+      )}
     </div>
-  </dialog>
-)}
+  );
