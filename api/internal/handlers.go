@@ -43,15 +43,15 @@ func (h *Handler) ListCustomers(w http.ResponseWriter, r *http.Request) {
     json.NewEncoder(w).Encode(out)
 }
 
-type CaseModel struct {
-    ID                 int             `json:"id"`
-    ModelName          string          `json:"model_name"`
-    WidthInches        sql.NullFloat64 `json:"width_inches"`
-    DepthInches        sql.NullFloat64 `json:"depth_inches"`
-    Sqft               sql.NullFloat64 `json:"sqft"`
-    SqftRounded        sql.NullInt64   `json:"sqft_rounded"`
-    WarehouseSpaceSqft sql.NullFloat64 `json:"warehouse_space_sqft"`
-    CreatedAt          sql.NullTime    `json:"created_at"`
+type CaseModelResponse struct {
+    ID                 int     `json:"id"`
+    ModelName          string  `json:"model_name"`
+    WidthInches        *float64 `json:"width_inches"`
+    DepthInches        *float64 `json:"depth_inches"`
+    Sqft               *float64 `json:"sqft"`
+    SqftRounded        *int     `json:"sqft_rounded"`
+    WarehouseSpaceSqft *float64 `json:"warehouse_space_sqft"`
+    CreatedAt          *string  `json:"created_at"`
 }
 
 func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
@@ -78,4 +78,53 @@ func (h *Handler) ListCaseModels(w http.ResponseWriter, r *http.Request) {
 
     w.Header().Set("Content-Type", "application/json")
     json.NewEncoder(w).Encode(models)
+}
+
+var models []CaseModelResponse
+for rows.Next() {
+    var (
+        id int
+        modelName string
+        width, depth, sqft, warehouse sql.NullFloat64
+        sqftRounded sql.NullInt64
+        createdAt sql.NullTime
+    )
+
+    err := rows.Scan(&id, &modelName, &width, &depth, &sqft, &sqftRounded, &warehouse, &createdAt)
+    if err != nil {
+        http.Error(w, err.Error(), http.StatusInternalServerError)
+        return
+    }
+
+    var createdAtStr *string
+    if createdAt.Valid {
+        s := createdAt.Time.Format(time.RFC3339)
+        createdAtStr = &s
+    }
+
+    models = append(models, CaseModelResponse{
+        ID: id,
+        ModelName: modelName,
+        WidthInches: nullableFloat(width),
+        DepthInches: nullableFloat(depth),
+        Sqft: nullableFloat(sqft),
+        SqftRounded: nullableInt(sqftRounded),
+        WarehouseSpaceSqft: nullableFloat(warehouse),
+        CreatedAt: createdAtStr,
+    })
+}
+
+func nullableFloat(f sql.NullFloat64) *float64 {
+    if f.Valid {
+        return &f.Float64
+    }
+    return nil
+}
+
+func nullableInt(i sql.NullInt64) *int {
+    if i.Valid {
+        val := int(i.Int64)
+        return &val
+    }
+    return nil
 }
