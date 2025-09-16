@@ -308,7 +308,7 @@ CREATE TABLE stg_jobinventory (
 -- Example commands; comment out if loading with external ETL/tooling.
 -- ======================================================================
 
-LOAD DATA INFILE '/import/JODB-tbl_Companies.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_Companies.csv'
 INTO TABLE stg_companies
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -322,7 +322,7 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES
 (ID, CompID, Store, StoreAddress, StoreCity, StoreProv, StorePostalCode);
 
-LOAD DATA INFILE '/import/JODB-tbl_CaseModels.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_CaseModels.csv'
 INTO TABLE stg_casemodels
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -332,7 +332,7 @@ IGNORE 1 LINES
  `Case Size`, `AltDescription`, `Square Footage`, `Rounded Square Footage`)
 SET `Square Footage with Space in Warehouse` = NULLIF(@sfww, '');
 
-LOAD DATA INFILE '/import/JODB-tbl_Quote.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_Quote.csv'
 INTO TABLE stg_quote
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -343,7 +343,7 @@ SET QuoteDate = STR_TO_DATE(@var_quote_date, '%m/%d/%Y %H:%i'),
     QuoteExpiry = STR_TO_DATE(@var_quote_expiry, '%m/%d/%Y %H:%i'),
     PurchaseOrder = NULLIF(@var_purchase_order, '');
 
-LOAD DATA INFILE '/import/JODB-tbl_JobCostEstimate.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_JobCostEstimate.csv'
 INTO TABLE stg_jobcostestimate
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
@@ -360,7 +360,7 @@ SET ShipOrigin = NULLIF(@var_ship_origin, ''),
     IntraCanada = NULLIF(@var_intracanada, ''),
     ExtendedPrice = NULLIF(@var_extendedprice, '');
 
-LOAD DATA INFILE '/import/JODB-tbl_JobInventory.csv'
+LOAD DATA INFILE '/var/lib/mysql-files/import/JODB-tbl_JobInventory.csv'
 INTO TABLE stg_jobinventory
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
