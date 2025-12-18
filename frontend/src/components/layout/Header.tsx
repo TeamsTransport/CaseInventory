@@ -19,6 +19,14 @@ export default function Header() {
           </li>
           <li>
             <NavLink
+              to="/addresses"
+              className={({ isActive }) => isActive ? "active font-semibold" : ""}
+            >
+              Addresses
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/case-models"
               className={({ isActive }) => isActive ? "active font-semibold" : ""}
             >
