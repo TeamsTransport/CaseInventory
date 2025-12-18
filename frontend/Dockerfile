@@ -12,7 +12,7 @@ RUN if [ -f package-lock.json ]; then \
       npm ci --include=dev; \
     else \
       echo "No package-lock.json -> npm install"; \
-      npm install -g npm@latest; \
+      npm install; \
     fi
 
 # Copy source
