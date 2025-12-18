@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../services/api';
-import { ScoreCardItem, DriverType } from '../types';
+import { ScoreCardItem, DriverType } from './types';
 
 const ScorecardSetup = () => {
   const addModalRef = useRef<HTMLDialogElement>(null);

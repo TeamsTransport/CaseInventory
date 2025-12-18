@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../services/api';
-import { Truck, Driver, TruckHistoryEvent } from '../types';
+import { Truck, Driver, TruckHistoryEvent } from './types';
 
 const Trucks = () => {
   const [selectedTruck, setSelectedTruck] = useState<Truck | null>(null);

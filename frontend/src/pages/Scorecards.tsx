@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { api } from '../services/api';
-import { ScoreCardEvent, Driver, ScoreCardItem } from '../types';
+import { ScoreCardEvent, Driver, ScoreCardItem } from './types';
 
 const Scorecards = () => {
   const deleteModalRef = useRef<HTMLDialogElement>(null);
