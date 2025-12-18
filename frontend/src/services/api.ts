@@ -1,7 +1,6 @@
 // frontend/src/services/api.ts
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:8080/api';
 
-// Helper function for API calls
 async function fetchAPI(endpoint: string, options?: RequestInit) {
   const response = await fetch(`${API_BASE}${endpoint}`, {
     headers: {
@@ -12,7 +11,8 @@ async function fetchAPI(endpoint: string, options?: RequestInit) {
   });
   
   if (!response.ok) {
-    throw new Error(`API Error: ${response.statusText}`);
+    const error = await response.text();
+    throw new Error(`API Error (${response.status}): ${error}`);
   }
   
   return response.json();
@@ -35,23 +35,6 @@ export const api = {
   deleteDriver: (id: number) =>
     fetchAPI(`/drivers/${id}`, { method: 'DELETE' }),
 
-  // ========== DRIVER STATS ==========
-  getDriverStats: (driverId: number) => 
-    fetchAPI(`/drivers/${driverId}/stats`),
-
-  // ========== SAFETY EVENTS ==========
-  getSafetyEvents: (params?: { driverId?: number; startDate?: string; endDate?: string }) => {
-    const query = params ? `?${new URLSearchParams(params as any).toString()}` : '';
-    return fetchAPI(`/safety-events${query}`);
-  },
-  createSafetyEvent: (event: any) =>
-    fetchAPI('/safety-events', {
-      method: 'POST',
-      body: JSON.stringify(event),
-    }),
-  deleteSafetyEvent: (id: number) =>
-    fetchAPI(`/safety-events/${id}`, { method: 'DELETE' }),
-
   // ========== TRUCKS ==========
   getTrucks: () => fetchAPI('/trucks'),
   createTruck: (truck: any) =>
@@ -67,8 +50,33 @@ export const api = {
       body: JSON.stringify({ driverId, truckId }),
     }),
 
+  // ========== SAFETY EVENTS ==========
+  getSafetyEvents: (params?: { driverId?: number; startDate?: string; endDate?: string }) => {
+    const query = params ? `?${new URLSearchParams(params as any).toString()}` : '';
+    return fetchAPI(`/safety-events${query}`);
+  },
+  createSafetyEvent: (event: any) =>
+    fetchAPI('/safety-events', {
+      method: 'POST',
+      body: JSON.stringify(event),
+    }),
+  deleteSafetyEvent: (id: number) =>
+    fetchAPI(`/safety-events/${id}`, { method: 'DELETE' }),
+
   // ========== DRIVER TYPES ==========
   getDriverTypes: () => fetchAPI('/driver-types'),
+  createDriverType: (driverType: any) =>
+    fetchAPI('/driver-types', {
+      method: 'POST',
+      body: JSON.stringify(driverType),
+    }),
+  updateDriverType: (id: number, driverType: any) =>
+    fetchAPI(`/driver-types/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(driverType),
+    }),
+  deleteDriverType: (id: number) =>
+    fetchAPI(`/driver-types/${id}`, { method: 'DELETE' }),
 
   // ========== SAFETY CATEGORIES ==========
   getSafetyCategories: () => fetchAPI('/safety-categories'),
@@ -85,14 +93,28 @@ export const api = {
   deleteSafetyCategory: (id: number) =>
     fetchAPI(`/safety-categories/${id}`, { method: 'DELETE' }),
 
-  // ========== SCORECARD ==========
+  // ========== SCORECARD ITEMS ==========
   getScoreCardItems: () => fetchAPI('/scorecard-items'),
+  addScoreCardItem: (item: any) =>
+    fetchAPI('/scorecard-items', {
+      method: 'POST',
+      body: JSON.stringify(item),
+    }),
+  updateScoreCardItem: (id: number, item: any) =>
+    fetchAPI(`/scorecard-items/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(item),
+    }),
+  deleteScoreCardItem: (id: number) =>
+    fetchAPI(`/scorecard-items/${id}`, { method: 'DELETE' }),
+
+  // ========== SCORECARD EVENTS ==========
   getScoreCardEvents: (driverId: number, date: string, category: string) =>
     fetchAPI(`/scorecard-events?driverId=${driverId}&date=${date}&category=${category}`),
-  saveScoreCardEvents: (driverId: number, date: string, category: string, events: any[]) =>
-    fetchAPI('/scorecard-events/batch', {
+  addScoreCardEvent: (event: any) =>
+    fetchAPI('/scorecard-events', {
       method: 'POST',
-      body: JSON.stringify({ driverId, date, category, events }),
+      body: JSON.stringify(event),
     }),
   deleteScoreCardEvents: (driverId: number, date: string, category: string) =>
     fetchAPI(`/scorecard-events?driverId=${driverId}&date=${date}&category=${category}`, {
