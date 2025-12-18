@@ -9,7 +9,7 @@ COPY package*.json ./
 # Install deps: prefer npm ci when lockfile exists, else fallback to npm install
 RUN if [ -f package-lock.json ]; then \
       echo "Using package-lock.json -> npm ci"; \
-      npm ci; \
+      npm ci --include=dev; \
     else \
       echo "No package-lock.json -> npm install"; \
       npm install -g npm@latest; \
