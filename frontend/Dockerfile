@@ -3,13 +3,11 @@ FROM node:20-alpine as build
 
 WORKDIR /app
 
-# Copy package manifests (lock file may or may not exist)
-COPY package.json ./
-# Try to copy the lock if present; ignore error if missing
-# (Docker can’t conditionally copy; we handle the condition in RUN)
-COPY package-lock.json . 2>/dev/null || true
+# Copy package manifests; the glob will match package.json and package-lock.json if present
+# If only package.json exists, this still succeeds.
+COPY package*.json ./
 
-# Install: use `npm ci` when lock exists; otherwise fall back to `npm install`
+# Install deps: prefer npm ci when a lockfile exists; otherwise fallback to npm install
 RUN if [ -f package-lock.json ]; then \
       echo "Using package-lock.json -> npm ci"; \
       npm ci; \
