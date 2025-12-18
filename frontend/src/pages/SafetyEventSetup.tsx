@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { db } from './services/dbStore';
+import { db } from '../services/dbStore';
 import { SafetyCategory } from '../types';
 
 const SafetyEventSetup = () => {
