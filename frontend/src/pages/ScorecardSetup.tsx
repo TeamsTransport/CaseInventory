@@ -66,7 +66,7 @@ const ScorecardSetup = () => {
 
     try {
       // Create the new item via API
-      await api.addScoreCardItem(newItem);
+      await api.addScoreCardItem(newItem, {});
       
       // Refresh the list
       await refresh();
@@ -90,7 +90,7 @@ const ScorecardSetup = () => {
 
     try {
       // Update the item via API
-      await api.updateScoreCardItem(editingItem);
+      await api.updateScoreCardItem(editingItem.sc_category_id, editingItem);
       
       // Refresh the list
       await refresh();
@@ -109,7 +109,7 @@ const ScorecardSetup = () => {
     if (itemToDelete !== null) {
       try {
         // Delete the item via API
-        await api.deleteScoreCardItem(itemToDelete);
+        await api.deleteScoreCardItem(itemToDelete, {});
         
         // Remove from local state
         setItems(items.filter(i => i.sc_category_id !== itemToDelete));

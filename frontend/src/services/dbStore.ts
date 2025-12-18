@@ -2,7 +2,7 @@
 import { 
   Truck, Driver, DriverType, SafetyCategory, 
   ScoreCardItem, SafetyEvent, ScoreCardEvent, TruckHistoryEvent 
-} from './types';
+} from '../types';
 
 class DBStore {
   trucks: Truck[] = [
