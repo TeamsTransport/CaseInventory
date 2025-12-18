@@ -1,0 +1,15 @@
+drive-safe-bonus-tracker/
+├── frontend/          # React application
+│   ├── src/
+│   │   ├── pages/    # Page components
+│   │   ├── services/ # API service layer
+│   │   └── types/    # TypeScript definitions
+│   ├── package.json
+│   └── Dockerfile
+├── backend/           # Go API server
+│   ├── main.go       # Main server file
+│   ├── go.mod
+│   └── Dockerfile
+├── docker-compose.yml # Multi-container setup
+├── init.sql          # Database schema
+└── README.md

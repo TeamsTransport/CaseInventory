@@ -1,67 +1,49 @@
 services:
-  db:
-    image: mariadb:lts
-    container_name: maria
-    restart: unless-stopped
+  mariadb:
+    image: mariadb:latest
+    restart: always
     environment:
-      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
-      MARIADB_DATABASE: ${MARIADB_DATABASE}
-      MARIADB_USER: ${MARIADB_USER}
-      MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: safe_drive
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
     ports:
-      - "5306:3306"
+      - "3306:3306"
     volumes:
-      - db_data:/var/lib/mysql
-      - ./mysql-files:/var/lib/mysql-files
-      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-      - ./db/import:/var/lib/mysql-files/import:ro
-    command: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_unicode_ci","--secure-file-priv=/var/lib/mysql-files", "--local-infile=ON"]
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      timeout: 20s
+      retries: 10
 
-  adminer:
-    image: adminer:latest
-    container_name: adminer
-    restart: unless-stopped
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    restart: always
     ports:
       - "8080:8080"
-    volumes:
-      - ./php-local-infile.ini:/usr/local/etc/php/conf.d/php-local-infile.ini:ro
     depends_on:
-      - db
-
-  api:
-    build: ./api
-    container_name: api
-    restart: unless-stopped
-    env_file: .env
+      mariadb:
+        condition: service_healthy
     environment:
-      DB_HOST: db
+      DB_HOST: mariadb
       DB_PORT: 3306
-      DB_NAME: ${MARIADB_DATABASE}
-      DB_USER: ${MARIADB_USER}
-      DB_PASS: ${MARIADB_PASSWORD}
-      PORT: 8081
-    ports:
-      - "8081:8081"
-    depends_on:
-      - db
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: safe_drive
+      GO_ENV: development
 
-  web:
+  frontend:
     build:
-      context: ./web
-      args:
-        VITE_API_BASE_URL: http://localhost:8081
-    container_name: web
-    restart: unless-stopped
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
     ports:
-      - "3000:5173"
-    volumes:
-      - ./web:/app
-      - /app/node_modules
-    environment:
-      - VITE_API_BASE_URL=http://localhost:8081
-    command: ["npm","run","dev","--","--host"]
+      - "80:80"
     depends_on:
-      - api
+      - backend
 
 volumes:
-  db_data:
+  mariadb_data:

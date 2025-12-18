@@ -1,16 +1,30 @@
-# Build
-FROM golang:1.22-alpine AS build
-WORKDIR /src
-COPY go.mod go.sum ./
-RUN go mod download -x
-RUN go mod verify 
-COPY . .
-RUN CGO_ENABLED=0 GOOS=linux go build -o /out/api ./main.go
+# Build stage
+FROM golang:1.22-alpine AS builder
 
-# Run
-FROM gcr.io/distroless/base-debian12:nonroot
 WORKDIR /app
-COPY --from=build /out/api /app/api
-EXPOSE 8081
-USER nonroot:nonroot
-ENTRYPOINT ["/app/api"]
+
+# Copy go mod and sum files
+COPY go.mod go.sum ./
+
+# Download dependencies
+RUN go mod download
+
+# Copy source code
+COPY . .
+
+# Build the application
+RUN go build -o main .
+
+# Final stage
+FROM alpine:latest
+
+WORKDIR /root/
+
+# Copy the binary from builder
+COPY --from=builder /app/main .
+
+# Expose port
+EXPOSE 8080
+
+# Command to run
+CMD ["./main"]

@@ -1,27 +1,24 @@
-# Access → MariaDB + Go API + React (Vite + Tailwind + daisyUI)
+# Drive Safe Bonus Tracker - Full Stack Edition
 
-This is a ready-to-run Docker dev stack. Replace the sample schema with your own and import your CSVs.
+A comprehensive driver safety management system with React frontend, Go backend, and MariaDB database.
 
-## Quick start
+## Quick Start
+
+### Prerequisites
+- Docker & Docker Compose
+- Node.js 20+ (for local development)
+- Go 1.22+ (for local development)
+
+### Option 1: Run with Docker (Recommended)
+
 ```bash
-cp .env.example .env
-docker compose up -d --build
-# Web:     http://localhost:3000
-# API:     http://localhost:8081/api/health
-# Adminer: http://localhost:8080
-```
+# Clone and setup
+./setup.sh
 
-## Import your data
-1. Put your CSV files into `db/import/`.
-2. Adjust/create tables in `db/init/001_schema.sql` so columns match your CSV headers/order.
-3. Use Adminer or the provided sample `LOAD DATA` commands from the main guide to import.
+# Build and run all services
+docker-compose up --build
 
-## Structure
-- `db/` — MariaDB init scripts and (optional) CSVs
-- `api/` — Go API
-- `web/` — React + Vite + Tailwind + daisyUI
-
-## Notes
-- Dev only: Vite dev server. For prod, build static and serve via Nginx/Caddy.
-- Database uses utf8mb4.
-- Minimal sample tables: `customers`, `orders`.
+# Access the application:
+# Frontend: http://localhost
+# Backend API: http://localhost:8080
+# Database: localhost:3306 (user: user, password: password)
