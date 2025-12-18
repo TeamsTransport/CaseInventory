@@ -4,7 +4,7 @@ import {
   PieChart, Pie, Cell, Legend
 } from 'recharts';
 import { api } from '../services/api';
-import { Driver, SafetyEvent, SafetyCategory, Truck } from '../types';
+import { Dashboard, Driver, SafetyEvent, SafetyCategory, Truck } from '../types';
 
 const Dashboard = () => {
   const [dashboardStats, setDashboardStats] = useState<any>(null);
