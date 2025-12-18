@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../services/api';
-import { Driver, DriverType, Truck } from './types';
+import { Driver, DriverType, Truck } from '../types';
 
 const DriverSetup = () => {
   const [drivers, setDrivers] = useState<Driver[]>([]);

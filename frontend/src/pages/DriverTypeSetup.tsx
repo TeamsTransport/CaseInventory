@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../services/api';  // Changed from './services/dbStore' to '../services/api'
-import { DriverType } from './types';
+import { DriverType } from '../types';
 
 const DriverTypeSetup = () => {
   const [types, setTypes] = useState<DriverType[]>([]);  // Changed from db.driverTypes to []

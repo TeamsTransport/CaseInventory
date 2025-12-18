@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { db } from './services/dbStore';
-import { SafetyCategory } from './types';
+import { SafetyCategory } from '../types';
 
 const SafetyEventSetup = () => {
   const setupModalRef = useRef<HTMLDialogElement>(null);

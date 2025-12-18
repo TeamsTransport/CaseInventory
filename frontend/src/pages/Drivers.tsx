@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../services/api';
 // If you have Gemini service, but you might need to update this path
 // import { getSafetyInsights } from '../services/geminiService';
-import { Driver, SafetyEvent, DriverType, Truck } from './types';
+import { Driver, SafetyEvent, DriverType, Truck } from '../types';
 
 const Drivers = () => {
   // State for data

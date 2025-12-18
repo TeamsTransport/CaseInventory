@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { api } from '../services/api';
-import { SafetyCategory, SafetyEvent, Driver } from './types';
+import { SafetyCategory, SafetyEvent, Driver } from '../types';
 
 const SafetyEvents = () => {
   const logModalRef = useRef<HTMLDialogElement>(null);
